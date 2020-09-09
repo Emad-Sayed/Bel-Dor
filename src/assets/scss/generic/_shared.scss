@@ -1,12 +1,14 @@
 html {
-  font-family: 'Gayathri', sans-serif;
+  &[dir="ltr"] {
+    font-family: 'Gayathri', sans-serif;
+  }
+  &[dir="rtl"] {
+    font-family: 'Tajawal', sans-serif;
+  }
+
   font-weight: 400;
   font-size: 62.5%;
   color: $main-dark-color;
-
-  [dir="rtl"] & {
-    font-family: 'Tajawal', sans-serif;
-  }
 }
 body {
   font-size: 14px; /* px fallback */
