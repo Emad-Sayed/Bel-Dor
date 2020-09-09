@@ -116,10 +116,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include square(20px);
-    background-color: #fff;
-    border-radius: 4px;
-    margin-right: 5px;
+    @include square(30px);
+    background-color: $shade-dark-color;
+    border-radius: $border-radius;
+    margin-inline-end: 10px;
     cursor: pointer;
     @include transition(all);
   }
@@ -128,7 +128,7 @@
 
     ~ .custom-radio {
       background-color: $main-color;
-      color: #fff;
+      color: $main-dark-color;
     }
   }
 }
