@@ -10,15 +10,15 @@
   width: 100%;
   
   border: unset;
-  border-bottom: 1px solid $main-dark-color;
   
   color: $main-dark-color;
-  font-size: 1.8rem;
+  background-color: $main-light-color;
+  font-size: 1.6rem;
 
   padding: 2rem 5px;
 
   &::placeholder {
-    color: $main-dark-color;
+    color: $shade-dark-color;
   }
 
   &:focus {
@@ -28,8 +28,12 @@
 
   &:focus, &.ng-dirty {
     ~ .e-form-label--overInput {
-      top: -50px;
       color: $main-color;
+      transform: translate3d(0, -40px, 0);
+      animation: labelFocused 0.5s ease-in-out;
+      [dir="rtl"] & {
+        animation: labelFocusedRtl 0.5s ease-in-out;
+      }
     }
   }
 
@@ -65,8 +69,14 @@
   &:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     ~ .e-form-label--overInput {
-      top: -50px;
       color: $main-color;
+      transform: translate3d(0, -40px, 0);
+      [dir="ltr"] & {
+        animation: labelFocused 0.5s ease-in-out;
+      }
+      [dir="rtl"] & {
+        animation: labelFocusedRtl 0.5s ease-in-out;
+      }
     }
   }
 }
@@ -75,7 +85,9 @@
   cursor: pointer;
   color: $main-dark-color;
   font-size: 1.8rem;
-  @include transition(all);
+  font-weight: 700;
+  transform: translate3d(0, 0, 0);
+  @include transition(transform);
 
   &--overInput {
     position: absolute;
@@ -84,6 +96,10 @@
     bottom: 0;
     margin: auto 0;
     height: 18px;
+    [dir="rtl"] & {
+      left: unset;
+      right: 5px;
+    }
   }
 }
 
