@@ -1,7 +1,23 @@
-a.e-link {
+.e-link {
   color: $main-color;
   cursor: pointer;
   @include transition(color);
+  text-decoration: none;
+
+  &--active {
+    position: relative;
+    font-weight: 700;
+    
+    &::after {
+      @extend .o-ticket;
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
 
   &:hover {
     text-decoration: underline;

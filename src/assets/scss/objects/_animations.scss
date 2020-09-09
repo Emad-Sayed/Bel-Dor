@@ -1,0 +1,22 @@
+@keyframes labelFocused {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(30px, -40px, 0);
+  }
+  100% {
+    transform: translate3d(0, -40px, 0);
+  }
+}
+@keyframes labelFocusedRtl {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-30px, -40px, 0);
+  }
+  100% {
+    transform: translate3d(0, -40px, 0);
+  }
+}

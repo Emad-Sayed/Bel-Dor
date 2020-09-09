@@ -1,12 +1,14 @@
 .e-main-btn {
   @include resetBtn;
-  @include box(350, 55);
+  @include box(180, 60);
   background-color: $main-color;
-  color: #fff;
-  font-size: 2.4rem;
+  color: $main-dark-color;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: capitalize;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
-  @include transition(background-color);
+  @include transition(all);
 
   &--withPadding {
     width: auto;
@@ -15,26 +17,26 @@
   }
 
   &:hover {
-    box-shadow: $box-shadow;
+    transform: translate3d(0, -5px, 5px);
+    box-shadow:  0 10px 40px rgba($color: $main-color, $alpha: 0.1); 
   }
 }
 
-.c-text-btn {
+.e-text-btn {
   @include resetBtn;
   color: $main-color;
   font-size: 1.6rem;
   font-weight: 400;
   background-color: transparent;
   padding: 0;
-  text-transform: capitalize;
 }
 
 .e-secondary-btn {
   @include resetBtn;
-  padding: 7px 12px;
+  padding: 8px 15px;
   font-size: 1.6rem;
   font-weight: 600;
-  border-radius: 4px;
-  background-color: $main-color;
-  color: #fff;
+  border-radius: $border-radius;
+  background-color: $main-light-color;
+  color: $main-dark-color;
 }

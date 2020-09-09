@@ -10,3 +10,10 @@
   left: 0;
   z-index: 1;
 }
+
+.o-ticket {
+  display: inline-block;
+  @include square(10px);
+  background-color: $main-color;
+  border-radius: 2px;
+}

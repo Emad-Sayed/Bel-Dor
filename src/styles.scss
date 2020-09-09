@@ -15,6 +15,11 @@
 @import "./assets/scss/generic/fonts";
 @import "./assets/scss/generic/shared";
 
+// objects
+@import "./assets/scss/objects/animations";
+@import "./assets/scss/objects/layout";
+@import "./assets/scss/objects/overlays";
+
 // elements
 @import "./assets/scss/elements/buttons";
 @import "./assets/scss/elements/forms";
@@ -22,11 +27,6 @@
 @import "./assets/scss/elements/paragraphs";
 @import "./assets/scss/elements/links";
 @import "./assets/scss/elements/lists";
-
-// objects
-@import "./assets/scss/objects/animations";
-@import "./assets/scss/objects/layout";
-@import "./assets/scss/objects/overlays";
 
 // components
 
