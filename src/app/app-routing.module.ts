@@ -5,25 +5,22 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/home',
   },
   {
-    path: '/home',
-    // loadChildren: () => import('./core/home/home.module').then(m => m.)
+    path: 'home',
+    loadChildren: () =>
+      import('./core/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: '/about-us',
-    loadChildren: () => import('./core/about-us/about-us.module').then(m => m.AboutUsModule)
-  },
-  {
-    path: '',
-    // component:
-  },
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
+    path: 'about-us',
+    loadChildren: () =>
+      import('./core/about-us/about-us.module').then((m) => m.AboutUsModule),
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
