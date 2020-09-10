@@ -23,9 +23,14 @@ const routes: Routes = [
       import('./core/contact/contact.module').then((m) => m.ContactModule),
   },
   {
-    path: 'auth',
+    path: 'login',
     loadChildren: () =>
-      import('./core/auth/auth.module').then((m) => m.AuthModule),
+      import('./core/auth/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./core/auth/register/register.module').then((m) => m.RegisterModule),
   },
 ];
 

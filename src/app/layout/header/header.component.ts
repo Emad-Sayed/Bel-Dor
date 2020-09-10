@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     },
     {
       name: 'login',
-      router: '/auth/login',
+      router: '/login',
       role: 'all'
     },
   ];
