@@ -22,6 +22,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/contact/contact.module').then((m) => m.ContactModule),
   },
+  { path: 'auth', loadChildren: () => import('./core/auth/auth.module').then(m => m.AuthModule) },
 ];
 
 @NgModule({
