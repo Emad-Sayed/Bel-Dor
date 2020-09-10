@@ -1,0 +1,42 @@
+@import "../../../assets/scss/settings/variables";
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+
+  .logo {
+    font-size: 40px;
+    color: #fff;
+  }
+
+  .language-toggle {
+    display: flex;
+    width: 180px;
+    justify-content: flex-end;
+
+    .arabic-label {
+      .custom-radio {
+        font-family: 'Tajawal';
+        margin-right: 0;
+      }
+    }
+    
+    .custom-radio {
+      color: $main-light-color;
+    }
+
+    .e-form-radio:checked ~ .custom-radio {
+      color: $main-dark-color;
+    }
+  }
+
+
+  .o-nav {
+    flex-basis: 100%;
+    margin-top: 4rem;
+    justify-content: center;
+  }
+}
