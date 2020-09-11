@@ -23,3 +23,13 @@ body {
   background-position: center;
   background-size: cover;
 }
+
+small {
+  font-size: 1.3rem;
+  color: $shade-dark-color;
+}
+
+main {
+  position: relative;
+  z-index: 10;
+}
