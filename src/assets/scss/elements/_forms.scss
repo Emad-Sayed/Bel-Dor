@@ -1,8 +1,18 @@
+.e-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .e-form-group {
   position: relative;
 
-  &--withMargin {
-    margin-bottom: 2rem;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+  &--eightyWidth {
+    width: 80%;
   }
 }
 
@@ -12,10 +22,12 @@
   border: unset;
   
   color: $main-dark-color;
-  background-color: $main-light-color;
+  background-color: rgba($color: $shade-dark-color, $alpha: 0.1);
   font-size: 1.6rem;
+  border-radius: $border-radius;
+  border: 1px solid transparent;
 
-  padding: 2rem 5px;
+  padding: 2rem 15px;
 
   &::placeholder {
     color: $shade-dark-color;
@@ -24,6 +36,10 @@
   &:focus {
     border-color: $main-color;
     outline: none;
+  }
+  &.ng-valid {
+    border-color: $main-color;
+    background-color: $main-light-color;
   }
 
   &:focus, &.ng-dirty {
@@ -67,7 +83,8 @@
   &:-webkit-autofill,
   &:-webkit-autofill:hover, 
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    border-color: $main-color;
+    box-shadow: 0 0 0px 1000px #CBEEF3 inset;
     ~ .e-form-label--overInput {
       color: $main-color;
       transform: translate3d(0, -40px, 0);
@@ -84,21 +101,21 @@
 .e-form-label {
   cursor: pointer;
   color: $main-dark-color;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   transform: translate3d(0, 0, 0);
   @include transition(transform);
 
   &--overInput {
     position: absolute;
-    left: 5px;
+    left: 15px;
     top: 0;
     bottom: 0;
     margin: auto 0;
-    height: 18px;
+    height: 16px;
     [dir="rtl"] & {
       left: unset;
-      right: 5px;
+      right: 15px;
     }
   }
 }
@@ -153,4 +170,29 @@ input[type="file"] {
   position: absolute;
   left: 0;
   visibility: hidden;
+}
+
+.e-form-btn {
+  margin: 20px auto;
+}
+
+.e-form-error {
+  color: $failure;
+  padding: 0 15px;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.4rem;
+}
+
+.e-valid-input {
+  position: relative;
+
+  &::after {
+    content: '✔';
+    font-size: 16px;
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    color: $main-color;
+  }
 }

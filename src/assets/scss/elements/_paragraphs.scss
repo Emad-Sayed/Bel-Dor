@@ -1,6 +1,10 @@
 .e-paragraph {
   font-size: 1.8rem;
-  color: $main-dark-color;
+  color: $shade-dark-color;
   line-height: 28px;
   margin-bottom: 3rem;
+
+  &--center {
+    text-align: center;
+  }
 }

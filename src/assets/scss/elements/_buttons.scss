@@ -20,6 +20,11 @@
     transform: translate3d(0, -5px, 5px);
     box-shadow:  0 10px 40px rgba($color: $main-color, $alpha: 0.1); 
   }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 }
 
 .e-text-btn {
