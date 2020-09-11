@@ -1,0 +1,10 @@
+:host {
+  .ticket-graphic {
+    width: 490px;
+    height: 380px;
+    background-image: url('../assets/images/ticket.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+  }
+}

@@ -30,20 +30,8 @@
 }
 
 .o-section-content {
-  background-color: #fff;
-  box-shadow: $box-shadow;
-  border-radius: 10px;
-  padding: 3rem;
-  height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
-
-  &__heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
 }
 
 .o-full-height {

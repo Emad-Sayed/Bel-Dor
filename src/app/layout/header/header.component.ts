@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   navLinks: NavLink[] = [
     {
       name: 'home',
-      router: '/',
+      router: '/home',
       role: 'all'
     },
     {
