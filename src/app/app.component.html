@@ -1,6 +1,10 @@
 <app-header></app-header>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <main class="o-card" @animateContent>
+    <router-outlet></router-outlet>
+  </main>
+</div>
 
 <span class="ticket-graphic" @ticketAnim *ngIf="showPageContent"></span>
 
