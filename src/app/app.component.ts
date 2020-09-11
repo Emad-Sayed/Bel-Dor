@@ -1,14 +1,14 @@
 import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TranslationsService } from './shared/services/translations.service';
-import { ticketAnimation } from './shared/animations/ticket-animation';
-import { RouterOutlet } from '@angular/router';
+import { ticketAnimation, contentAnimation } from './shared/animations/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    ticketAnimation
+    ticketAnimation,
+    contentAnimation
   ]
 })
 export class AppComponent implements AfterViewInit {
@@ -27,8 +27,4 @@ export class AppComponent implements AfterViewInit {
     let lang = localStorage.getItem('language') || 'en';
     this.translation.changeLanguage(lang);
   }
-  
-  // prepareRoute(outlet: RouterOutlet) {
-  //   return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-  // }
 }
