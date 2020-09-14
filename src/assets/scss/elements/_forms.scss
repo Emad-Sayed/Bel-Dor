@@ -64,8 +64,8 @@
     
     ~ .custom-checkbox {
       display: inline-block;
-      border: 2px solid $main-color;
-      vertical-align: text-bottom;
+      border: 2px solid $main-dark-color;
+      vertical-align: middle;
       border-radius: 2px;
       @include square(18px);
     }
@@ -191,8 +191,8 @@ input[type="file"] {
     content: '✔';
     font-size: 16px;
     position: absolute;
-    right: 15px;
-    top: 25px;
+    right: 5px;
+    top: 10px;
     color: $main-color;
   }
 }

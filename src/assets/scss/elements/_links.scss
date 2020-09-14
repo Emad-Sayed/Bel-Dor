@@ -3,6 +3,7 @@
   cursor: pointer;
   @include transition(color);
   text-decoration: none;
+  font-weight: 700;
 
   &--active {
     position: relative;
