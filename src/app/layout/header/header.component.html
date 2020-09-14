@@ -1,5 +1,5 @@
 <header>
-  
+
   <button class="e-main-btn" routerLink="/register">Register</button>
 
   <div class="logo">
@@ -7,46 +7,31 @@
   </div>
 
   <form class="language-toggle" [formGroup]="languageForm">
-    
+
     <fieldset class="e-form-group">
       <label class="e-form-label" for="en">
-        <input 
-        class="e-form-radio" 
-        id="en" 
-        type="radio" 
-        name="language" 
-        value="en" 
-        formControlName="language"
-        [checked]="_transService.isEnglish">
-        
+        <input class="e-form-radio" id="en" type="radio" name="language" value="en" formControlName="language"
+          [checked]="_transService.isEnglish">
+
         <span class="custom-radio">En</span>
       </label>
     </fieldset>
-    
+
     <fieldset class="e-form-group">
       <label class="e-form-label arabic-label" for="ar">
-        <input 
-        class="e-form-radio" 
-        id="ar" 
-        type="radio" 
-        name="language" 
-        value="ar" 
-        formControlName="language"
-        [checked]="!_transService.isEnglish">
-        
+        <input class="e-form-radio" id="ar" type="radio" name="language" value="ar" formControlName="language"
+          [checked]="!_transService.isEnglish">
+
         <span class="custom-radio">ع</span>
       </label>
     </fieldset>
-    
-  </form>
 
+  </form>
   <nav class="o-nav">
-    <a class="o-nav__link e-link" 
-    [routerLink]="[link.router]" 
-    routerLinkActive="e-link--active" 
-    *ngFor="let link of navLinks">
-      {{link.name}}
+    <a class="o-nav__link e-link" [routerLink]="[link.router]" routerLinkActive="e-link--active"
+      *ngFor="let link of navLinks">
+      {{link.name|translate}}
     </a>
   </nav>
-  
+
 </header>
