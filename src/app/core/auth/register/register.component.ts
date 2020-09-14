@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     username: new FormControl(
       '', 
-      [Validators.required, Validators.minLength(6), Validators.maxLength(15)]
+      [Validators.required, Validators.minLength(6), Validators.maxLength(25)]
       ),
     email: new FormControl(
       '', 
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       return 'Username is required!'
     } 
     else if (errors['maxlength'] || errors['minlength']) {
-      return 'Username should be 6 - 15 characters!'
+      return 'Username should be 6 - 25 characters!'
     }
   }
 
