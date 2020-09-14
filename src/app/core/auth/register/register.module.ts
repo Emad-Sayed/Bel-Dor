@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
+import { AuthModule } from '../module/auth/auth.module';
 
 
 const routes: Routes = [
@@ -15,8 +16,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
-    CommonModule,
-    SharedModule,
+    AuthModule,
     RouterModule.forChild(routes)
   ]
 })
