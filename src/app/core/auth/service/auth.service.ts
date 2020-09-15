@@ -8,10 +8,10 @@ export class AuthService {
   constructor(private http$: HttpClient) { }
 
   loginUser(credential: {username: string, password: string, rememberMe: boolean}) {
-    return this.http$.post(`${environment.baseUrl}/Auth`, credential);
+    return this.http$.post(`${environment.baseUrl}Auth`, credential);
   }
 
   registerUser(credential: {username: string, email: string, password: string}) {
-    return this.http$.post(`${environment.baseUrl}/Auth`, credential);
+    return this.http$.post(`${environment.baseUrl}Auth`, credential);
   }
 }
