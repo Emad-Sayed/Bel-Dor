@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from '../service/auth.service';
 
@@ -21,7 +23,10 @@ export class LoginComponent implements OnInit {
     rememberMe: new FormControl(false)
   });
 
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private _authService: AuthService, 
+    private jwtHelperService: JwtHelperService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -64,7 +69,12 @@ export class LoginComponent implements OnInit {
       this._authService.loginUser(this.loginForm.value)
       .subscribe(
         res => {
-          console.log(res);
+          const tokenData = this.jwtHelperService.decodeToken(res['token']);
+          
+          localStorage.setItem('token', res['token']);
+          localStorage.setItem('userCode', tokenData.Id);
+
+          this.router.navigateByUrl('/my-tickets');
         }
       );
     }
