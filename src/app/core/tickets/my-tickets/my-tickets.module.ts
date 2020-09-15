@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TicketsModule } from '../tickets.module';
+import { Routes, RouterModule } from '@angular/router';
+import { MyTicketsComponent } from './my-tickets.component';
 
 
+const routes: Routes = [
+  {
+    path: '',
+    component: MyTicketsComponent
+  }
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [MyTicketsComponent],
   imports: [
-    TicketsModule
+    TicketsModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class MyTicketsModule { }
