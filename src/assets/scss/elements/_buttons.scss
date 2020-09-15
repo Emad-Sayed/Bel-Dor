@@ -16,7 +16,7 @@
     padding: 10px 40px;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     transform: translate3d(0, -5px, 5px);
     box-shadow:  0 10px 40px rgba($color: $main-color, $alpha: 0.1); 
   }
