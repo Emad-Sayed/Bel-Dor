@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from '../service/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private _authService: AuthService, 
-    private jwtHelperService: JwtHelperService,
+    private _authService: AuthService,
+    private _userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -69,10 +69,7 @@ export class LoginComponent implements OnInit {
       this._authService.loginUser(this.loginForm.value)
       .subscribe(
         res => {
-          const tokenData = this.jwtHelperService.decodeToken(res['token']);
-          
-          localStorage.setItem('token', res['token']);
-          localStorage.setItem('userCode', tokenData.Id);
+          this._userService.setUser(res['token']);
 
           this.router.navigateByUrl('/my-tickets');
         }
