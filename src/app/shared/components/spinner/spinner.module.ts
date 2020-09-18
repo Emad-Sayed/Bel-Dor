@@ -1,5 +1,6 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LoadingInterceptor } from '../../services/loading-interceptor.service';
 import { SpinnerDirective } from './directive/spinner.directive';
 import { SpinnerComponent } from './spinner.component';
 
@@ -10,8 +11,11 @@ import { SpinnerComponent } from './spinner.component';
     SpinnerComponent,
     SpinnerDirective
   ],
-  imports: [
-    CommonModule
+  exports: [
+    SpinnerDirective
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ]
 })
 export class SpinnerModule { }
