@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpinnerDirective } from './spinner.directive';
+import { SpinnerDirective } from './directive/spinner.directive';
 import { SpinnerComponent } from './spinner.component';
 
 
