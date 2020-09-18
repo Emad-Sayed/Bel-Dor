@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { SpinnerModule } from '../../components/spinner/spinner.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -14,10 +15,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     ReactiveFormsModule,
+
+    SpinnerModule
   ],
   exports: [
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    
+    SpinnerModule
   ]
 })
 export class SharedModule { }
