@@ -13,6 +13,7 @@
 }
 
 @mixin resetBtn {
+  position: relative;
   cursor: pointer;
   border: none;
   font-family: inherit;
