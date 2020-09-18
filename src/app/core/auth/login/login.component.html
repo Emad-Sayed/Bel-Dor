@@ -54,6 +54,9 @@
       
     </div>
   
-    <button class="e-main-btn e-form-btn" [disabled]="loginForm.invalid" type="submit">Done</button>
+    <button class="e-main-btn e-form-btn" [disabled]="loginForm.invalid" type="submit">
+      <ng-template appSpinnerPlaceholder></ng-template>
+      Done
+    </button>
   </form>
 </section>

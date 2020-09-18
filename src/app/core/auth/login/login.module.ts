@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
-import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
-import { AuthService } from '../service/auth.service';
 import { AuthModule } from '../module/auth/auth.module';
+import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 
 
 const routes: Routes = [
@@ -18,7 +16,9 @@ const routes: Routes = [
   declarations: [LoginComponent],
   imports: [
     AuthModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    
+    SpinnerModule
   ]
 })
 

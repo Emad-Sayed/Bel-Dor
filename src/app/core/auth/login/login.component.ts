@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../service/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,8 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild(SpinnerDirective) spinnerPlaceholder: SpinnerDirective;
+  
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(
       '', 
@@ -64,8 +67,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginVisitor() {
-    console.log(this.loginForm);
+    // console.log(this.loginForm);
     if (this.loginForm.valid) {
+      this.spinnerPlaceholder.sendViewContainer();
+
       this._authService.loginUser(this.loginForm.value)
       .subscribe(
         res => {
