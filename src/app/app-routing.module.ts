@@ -34,15 +34,15 @@ const routes: Routes = [
       import('./core/auth/register/register.module').then((m) => m.RegisterModule),
   },
   { 
-    path: 'my-tickets', 
+    path: 'tickets', 
     loadChildren: () => 
-      import('./core/tickets/my-tickets/my-tickets.module').then(m => m.MyTicketsModule),
+      import('./core/tickets/visitor-tickets/visitor-tickets.module').then(m => m.VisitorTicketsModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'serve-tickets', 
     loadChildren: () => 
-      import('./core/tickets/serve-tickets/serve-tickets.module').then(m => m.ServeTicketsModule),
+      import('./core/tickets/employee-tickets/employee-tickets.module').then(m => m.EmployeeTicketsModule),
     canActivate: [AuthGuard]
   },
 ];
