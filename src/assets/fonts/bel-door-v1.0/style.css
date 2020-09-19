@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'bel-door';
+  src:  url('fonts/bel-door.eot?m0j4hu');
+  src:  url('fonts/bel-door.eot?m0j4hu#iefix') format('embedded-opentype'),
+    url('fonts/bel-door.ttf?m0j4hu') format('truetype'),
+    url('fonts/bel-door.woff?m0j4hu') format('woff'),
+    url('fonts/bel-door.svg?m0j4hu#bel-door') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'bel-door' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-trash-canbel-door:before {
+  content: "\e90c";
+}
+.icon-mapbel-door:before {
+  content: "\e025";
+}
+.icon-streetsignbel-door:before {
+  content: "\e029";
+}
+.icon-profile-malebel-door:before {
+  content: "\e040";
+}
+.icon-ticket-addbel-door .path1:before {
+  content: "\e900";
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-addbel-door .path2:before {
+  content: "\e901";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-addbel-door .path3:before {
+  content: "\e902";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-addbel-door .path4:before {
+  content: "\e903";
+  margin-left: -0.5302734375em;
+  color: rgb(202, 238, 242);
+}
+.icon-ticket-addbel-door .path5:before {
+  content: "\e904";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-addbel-door .path6:before {
+  content: "\e905";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-savebel-door .path1:before {
+  content: "\e906";
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-savebel-door .path2:before {
+  content: "\e907";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-savebel-door .path3:before {
+  content: "\e908";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-savebel-door .path4:before {
+  content: "\e909";
+  margin-left: -0.5302734375em;
+  color: rgb(202, 238, 242);
+}
+.icon-ticket-savebel-door .path5:before {
+  content: "\e90a";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-savebel-door .path6:before {
+  content: "\e90b";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
