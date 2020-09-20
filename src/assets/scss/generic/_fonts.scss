@@ -24,3 +24,104 @@
   font-weight: 700;
   font-style: normal;
 }
+
+
+// icon font
+
+@font-face {
+  font-family: 'bel-door';
+  src:  url('../../fonts/bel-door-icons/fonts/bel-door.eot?m0j4hu');
+  src:  url('../../fonts/bel-door-icons/fonts/bel-door.eot?m0j4hu#iefix') format('embedded-opentype'),
+    url('../../fonts/bel-door-icons/fonts/bel-door.ttf?m0j4hu') format('truetype'),
+    url('../../fonts/bel-door-icons/fonts/bel-door.woff?m0j4hu') format('woff'),
+    url('../../fonts/bel-door-icons/fonts/bel-door.svg?m0j4hu#bel-door') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.bel-door {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'bel-door' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-trash-can:before {
+  content: "\e90c";
+}
+.icon-map:before {
+  content: "\e025";
+}
+.icon-streetsign:before {
+  content: "\e029";
+}
+.icon-profile-male:before {
+  content: "\e040";
+}
+.icon-ticket-add .path1:before {
+  content: "\e900";
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-add .path2:before {
+  content: "\e901";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-add .path3:before {
+  content: "\e902";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-add .path4:before {
+  content: "\e903";
+  margin-left: -0.5302734375em;
+  color: rgb(202, 238, 242);
+}
+.icon-ticket-add .path5:before {
+  content: "\e904";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-add .path6:before {
+  content: "\e905";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-save .path1:before {
+  content: "\e906";
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-save .path2:before {
+  content: "\e907";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-save .path3:before {
+  content: "\e908";
+  margin-left: -0.5302734375em;
+  color: rgb(255, 255, 255);
+}
+.icon-ticket-save .path4:before {
+  content: "\e909";
+  margin-left: -0.5302734375em;
+  color: rgb(202, 238, 242);
+}
+.icon-ticket-save .path5:before {
+  content: "\e90a";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
+.icon-ticket-save .path6:before {
+  content: "\e90b";
+  margin-left: -0.5302734375em;
+  color: rgb(6, 218, 176);
+}
