@@ -7,25 +7,21 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class UserService {
 
-  token: string;
-  userData: any;
   isLogged$ = new BehaviorSubject(false);
 
   constructor(private jwtHelper: JwtHelperService) {
-    this.userData = this.jwtHelper.decodeToken(this.token);
     this.updateUser();
   }
 
   public setUser(userToken: string) {
     localStorage.setItem('token', userToken);
-    // this.userData = this.jwtHelper.decodeToken(this.token);
+    const userData = this.jwtHelper.decodeToken(userToken);
+    localStorage.setItem('userCode', userData.Id);
     this.updateUser();
-    localStorage.setItem('userCode', this.userData.Id);
   }
 
   updateUser() {
-    this.userData = this.jwtHelper.decodeToken(this.token);
-    this.isLogged$.next(!!this.userData);
+    this.isLogged$.next(!!localStorage.getItem('token'));
   }
 
   removeUser() {
@@ -33,5 +29,5 @@ export class UserService {
     localStorage.removeItem('userCode');
     this.updateUser();
   }
-  
+
 }
