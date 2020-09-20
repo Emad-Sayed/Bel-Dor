@@ -1,1 +1,77 @@
-<p>generate-ticket works!</p>
+<section class="o-section-content o-card" @animateContent>
+  <h2>Generate Ticket</h2>
+
+  <form [formGroup]="generateForm">
+    <!-- Branch select -->
+    <fieldset class="e-form-group e-form-group--eightyWidth">
+      <input
+        type="text"
+        class="e-form-control"
+        #branchInput
+        (focus)="openBranchList(branchInput, braList)"
+        readonly
+      />
+      <ul class="e-form-select" #braList>
+        <li class="e-form-select__item" *ngFor="let branch of branches">
+          <label [for]="branch.id">
+            <input
+              class="e-form-radio"
+              type="radio"
+              name="branch"
+              [value]="branch.id"
+              [id]="branch.id"
+              (change)="onBranchSelect($event)"
+            />
+            {{ _translationService.isEnglish ? branch.nameEN : branch.nameAR }}
+          </label>
+        </li>
+      </ul>
+      <label for="branch" class="e-form-label e-form-label--overInput">
+        Select Branch
+        <!-- <small>(required)</small> -->
+      </label>
+    </fieldset>
+
+    <!-- departments select -->
+    <fieldset class="e-form-group e-form-group--eightyWidth">
+      <input
+        type="text"
+        class="e-form-control"
+        #depInput
+        (focus)="openBranchList(depInput, depList)"
+        readonly
+      />
+      <ul class="e-form-select" #depList>
+        <li class="e-form-select__item" *ngFor="let department of branchDetail['departements']">
+          <label [for]="department.departementId">
+            <input
+              class="e-form-radio"
+              type="radio"
+              name="department"
+              [value]="department.departementId"
+              [id]="department.departementId"
+              (change)="onBranchSelect($event)"
+            />
+            {{ _translationService.isEnglish ? department.departementNameEN : department.departementNameAR }}
+          </label>
+        </li>
+      </ul>
+      <label for="branch" class="e-form-label e-form-label--overInput">
+        Select Department:{{_translationService.isEnglish? branchDetail['branchEN']: branchDetail['branchAR']}}
+        <!-- <small>(required)</small> -->
+      </label>
+    </fieldset>
+  </form>
+
+  <button class="e-main-btn" (click)="generateTicket()">
+    <span class="bel-door icon-ticket-add">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+    </span>
+    Generate
+  </button>
+</section>
