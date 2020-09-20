@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { VisitorTicketsComponent } from './visitor-tickets.component';
 import { GenerateTicketComponent } from './generate-ticket/generate-ticket.component';
+import { VisitorTicketsService } from './visitor-tickets.service';
 
 
 const routes: Routes = [
@@ -18,7 +21,12 @@ const routes: Routes = [
 @NgModule({
   declarations: [VisitorTicketsComponent, GenerateTicketComponent],
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    VisitorTicketsService
   ]
 })
 export class VisitorTicketsModule { }
