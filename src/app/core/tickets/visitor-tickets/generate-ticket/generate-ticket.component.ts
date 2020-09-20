@@ -1,6 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { contentAnimation } from 'src/app/shared/animations/animations';
+import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { VisitorTicketsService } from '../visitor-tickets.service';
 
@@ -13,6 +14,8 @@ import { VisitorTicketsService } from '../visitor-tickets.service';
   ]
 })
 export class GenerateTicketComponent implements OnInit {
+  @ViewChild(SpinnerDirective) spinnerPlaceholder: SpinnerDirective;
+  
   generateForm: FormGroup = new FormGroup({
     branch: new FormControl('', Validators.required),
     department: new FormControl('', Validators.required)
@@ -23,6 +26,7 @@ export class GenerateTicketComponent implements OnInit {
 
   showDepartmentsList = false;
   branchDetail = {};
+  selectedDep: {};
 
   constructor(
     private _visitorTicketService: VisitorTicketsService,
@@ -40,13 +44,10 @@ export class GenerateTicketComponent implements OnInit {
   openBranchList(input: HTMLElement, list?) {
     this.renderer.addClass(input, 'ng-dirty');
     this.renderer.setStyle(list, 'display', 'block');
-    this.showBranchList = true;
+    this.spinnerPlaceholder.sendViewContainer();
   }
-  closeBranchList(input: HTMLElement) {
-    console.log(input);
-    
-    this.renderer.removeClass(input, 'ng-dirty');
-    this.showBranchList = false;
+  closeBranchList(list: HTMLElement) {
+    this.renderer.removeStyle(list, 'display');
   }
   
   onBranchSelect(ev) {
@@ -58,6 +59,13 @@ export class GenerateTicketComponent implements OnInit {
 
       this.branchDetail = res['data'][0];
     });
+  }
+
+  onDepSelect(id) {
+    console.log(id);
+    this.selectedDep = this.branchDetail['departements'].find(dep => dep.id == id);
+
+    console.log(this.selectedDep);
   }
 
   generateTicket() {

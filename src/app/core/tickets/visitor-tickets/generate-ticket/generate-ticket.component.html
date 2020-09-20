@@ -11,6 +11,7 @@
         (focus)="openBranchList(branchInput, braList)"
         readonly
       />
+      <ng-template appSpinnerPlaceholder></ng-template>
       <ul class="e-form-select" #braList>
         <li class="e-form-select__item" *ngFor="let branch of branches">
           <label [for]="branch.id">
@@ -20,7 +21,7 @@
               name="branch"
               [value]="branch.id"
               [id]="branch.id"
-              (change)="onBranchSelect($event)"
+              (change)="onBranchSelect($event); closeBranchList(braList)"
             />
             {{ _translationService.isEnglish ? branch.nameEN : branch.nameAR }}
           </label>
@@ -47,10 +48,10 @@
             <input
               class="e-form-radio"
               type="radio"
-              name="department"
+              name="departments"
               [value]="department.departementId"
               [id]="department.departementId"
-              (change)="onBranchSelect($event)"
+              (change)="onDepSelect($event.target.value); closeBranchList(depList)"
             />
             {{ _translationService.isEnglish ? department.departementNameEN : department.departementNameAR }}
           </label>

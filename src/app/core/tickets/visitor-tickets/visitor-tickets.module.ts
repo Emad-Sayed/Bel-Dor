@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { VisitorTicketsComponent } from './visitor-tickets.component';
 import { GenerateTicketComponent } from './generate-ticket/generate-ticket.component';
 import { VisitorTicketsService } from './visitor-tickets.service';
+import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 
 
 const routes: Routes = [
@@ -23,7 +24,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+    SpinnerModule
   ],
   providers: [
     VisitorTicketsService
