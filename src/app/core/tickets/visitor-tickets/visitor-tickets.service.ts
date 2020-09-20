@@ -12,10 +12,7 @@ export class VisitorTicketsService {
     return this.http$.get(`${environment.baseUrl}Branch`);
   }
   getDepartmentsByBranchId(id: string) {
-    let params = new HttpParams();
-    params = params.set('id', id);
-    
-    return this.http$.get(`${environment.baseUrl}Branch`, {params: params});
+    return this.http$.get(`${environment.baseUrl}Branch/${+id}`);
   }
 
 }
