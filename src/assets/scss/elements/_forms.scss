@@ -211,17 +211,31 @@ input[type="file"] {
   cursor: pointer;
 
   &__item {
-    padding: 1.5rem 0;
     margin: 0 2rem;
-    @include transition(padding);
-
-    &:hover {
-      padding-right:  10px;
-      padding-left:  10px;
-    }
+    // padding: 1.5rem 0;
     
     &:not(:last-child) {
       border-bottom: 1px solid $main-color;  
+    }
+  }
+
+  &__label {
+    width: 100%;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    @include transition(padding);
+
+    &:hover:not(.active) {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+
+    &.active {
+      background-color: rgba($color: $shade-dark-color, $alpha: 0.1);
+      font-weight: 700;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: $border-radius;
     }
   }
 }
