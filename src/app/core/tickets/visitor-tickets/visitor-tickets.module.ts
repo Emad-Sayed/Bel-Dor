@@ -6,25 +6,15 @@ import { VisitorTicketsComponent } from './visitor-tickets.component';
 import { GenerateTicketComponent } from './generate-ticket/generate-ticket.component';
 import { VisitorTicketsService } from './visitor-tickets.service';
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
-
-
-const routes: Routes = [
-  {
-    path: '',
-    component: VisitorTicketsComponent
-  },
-  {
-    path: 'generate',
-    component: GenerateTicketComponent
-  }
-];
+import { TicketHistoryComponent } from './ticket-history/ticket-history.component';
+import { VisitorTicketsRoutingModule } from './visitor-tickets-routing.module';
 
 @NgModule({
-  declarations: [VisitorTicketsComponent, GenerateTicketComponent],
+  declarations: [VisitorTicketsComponent, GenerateTicketComponent, TicketHistoryComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
+    VisitorTicketsRoutingModule,
 
     SpinnerModule
   ],
