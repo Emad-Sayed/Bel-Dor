@@ -25,8 +25,8 @@ export class GenerateTicketComponent implements OnInit {
   branches = [];
 
   showDepartmentsList = false;
-  branchDetail = {};
-  selectedDep: {};
+  branchDetail: any = {};
+  selectedDep: any;
 
   constructor(
     private _visitorTicketService: VisitorTicketsService,
@@ -41,7 +41,7 @@ export class GenerateTicketComponent implements OnInit {
     });
   }
 
-  openBranchList(input: HTMLElement, list?) {
+  openListSelect(input: HTMLElement, list?) {
     this.renderer.addClass(input, 'ng-dirty');
     this.renderer.setStyle(list, 'display', 'block');
     this.spinnerPlaceholder.sendViewContainer();
@@ -58,14 +58,28 @@ export class GenerateTicketComponent implements OnInit {
       console.log(res);
 
       this.branchDetail = res['data'][0];
+
+      this.generateForm.get('branch').setValue(
+        this._translationService.isEnglish
+          ? this.branchDetail.branchEN
+          : this.branchDetail.branchAR
+      );
+
+      if (this.generateForm.get('department').value) {
+        this.generateForm.get('department').reset();
+      }
     });
   }
 
   onDepSelect(id) {
     console.log(id);
-    this.selectedDep = this.branchDetail['departements'].find(dep => dep.id == id);
+    this.selectedDep = this.branchDetail['departements'].find(dep => dep.departementId == id);
 
-    console.log(this.selectedDep);
+    this.generateForm.get('department').setValue(
+      this._translationService.isEnglish
+        ? this.selectedDep.departementNameEN
+        : this.selectedDep.departementNameAR
+    );
   }
 
   generateTicket() {
