@@ -46,3 +46,29 @@
     }
   }
 }
+
+.o-tabs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__tab {
+    @include resetBtn;
+    flex-basis: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    background-color: #06DAB04D;
+    text-transform: capitalize;
+
+    &--active {
+      background-color: $main-color;
+    }
+  }
+}
