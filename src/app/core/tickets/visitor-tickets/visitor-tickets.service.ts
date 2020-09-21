@@ -15,4 +15,8 @@ export class VisitorTicketsService {
     return this.http$.get(`${environment.baseUrl}Branch/${+id}`);
   }
 
+  generateTicket(data: {branchId: number, departementId: number}) {
+    return this.http$.post(`${environment.baseUrl}Ticket`, data);
+  }
+
 }

@@ -83,7 +83,19 @@ export class GenerateTicketComponent implements OnInit {
   }
 
   generateTicket() {
-    console.log('scakmls');
+    if(this.generateForm.valid) {
+      this.spinnerPlaceholder.sendViewContainer();
+      const data = {
+        branchId: this.branchDetail['branchId'],
+        departementId: this.selectedDep['departementId']
+      };
+      console.log(data);
+  
+      this._visitorTicketService.generateTicket(data)
+      .subscribe(res => {
+        console.log(res);
+      });
+    }
   }
 
 }
