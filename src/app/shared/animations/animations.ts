@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { trigger, transition, style, animate, state, keyframes } from '@angular/animations';
 
 export const ticketAnimation = 
   trigger('ticketAnim', [
@@ -23,3 +23,29 @@ export const contentAnimation =
 
     transition('void => *', animate('600ms cubic-bezier(0.55, 0.06, 0.68, 0.19)'))
   ]);
+
+export const toastAnimation = 
+trigger('flyInOut', [
+  state('inactive', style({
+    opacity: 0,
+  })),
+  transition('inactive => active', animate('400ms ease-out', keyframes([
+    style({
+      transform: 'translate3d(0, 100%, 0)',
+      opacity: 0,
+    }),
+    style({
+      transform: 'translate3d(0, 0, 0)',
+      opacity: 1,
+    })
+  ]))),
+  transition('active => removed', animate('400ms ease-out', keyframes([
+    style({
+      opacity: 1,
+    }),
+    style({
+      transform: 'translate3d(100%, 0, 0) skewX(30deg)',
+      opacity: 0,
+    }),
+  ]))),
+]);
