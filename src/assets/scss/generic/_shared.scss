@@ -37,3 +37,10 @@ main {
   position: relative;
   z-index: 10;
 }
+
+mark {
+  background-color: $main-color;
+  color: #fff;
+  @include square(10);
+  border-radius: $border-radius;
+}
