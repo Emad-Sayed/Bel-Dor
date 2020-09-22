@@ -12,6 +12,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
 import { JwtInterceptor } from './core/auth/service/jwt-interceptor.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
+import { ToastrComponent } from './shared/components/toastr/toastr.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,6 +25,7 @@ export function tokenGetter() {
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    ToastrComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +45,14 @@ export function tokenGetter() {
         deps: [HttpClient]
       }
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      toastComponent: ToastrComponent,
+      closeButton: true,
+      extendedTimeOut: 2000,
+      disableTimeOut: true
+    })
   ],
+  entryComponents: [ToastrComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],

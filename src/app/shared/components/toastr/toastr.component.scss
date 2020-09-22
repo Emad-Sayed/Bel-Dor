@@ -1,0 +1,13 @@
+@import "../../../../assets/scss/settings/variables";
+
+:host {
+  width: 80vw;
+  min-height: 100px;
+  margin: auto;
+  padding: 2rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5vh;
+  z-index: 10;
+}

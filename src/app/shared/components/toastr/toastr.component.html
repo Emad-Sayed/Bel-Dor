@@ -1,1 +1,21 @@
-<p>toastr works!</p>
+<div class="o-notification">
+<!-- <div class="o-notification" @animateToast *ngIf="state.value === 'active'"> -->
+  <h5 class="o-notification__heading">
+    {{ title }}
+  </h5>
+  <p class="o-notification__message" *ngIf="!options.enableHtml">{{ message }}</p>
+
+  <div
+    class="o-notification__action"
+    *ngIf="options.enableHtml"
+    [innerHTML]="message"
+  ></div>
+
+  <span
+    *ngIf="options.closeButton"
+    class="o-notification__close"
+    (click)="remove()"
+    aria-hidden="true"
+    >&times;</span
+  >
+</div>
