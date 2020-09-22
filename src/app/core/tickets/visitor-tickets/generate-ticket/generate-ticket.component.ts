@@ -98,11 +98,12 @@ export class GenerateTicketComponent implements OnInit {
       .subscribe(res => {
         // this.router.navigateByUrl('/tickets');
         this._notificationService
-        .showSuccess(`Your ticket number ${res['data']['ticketNumber']} <a class="e-link" routerLink="/tickets">Check it out.</a>`, 'Ticket generated successfully!');
+        .showSuccess(`Your ticket number <mark>${res['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`, 'Ticket generated successfully!');
       },
       err => {
         const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
-        this._notificationService.showError(errorMessage);
+        // this._notificationService.showError(`Your ticket number <mark>${err['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
+        this._notificationService.showError(`Your current active ticket number <mark>${err['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
       });
     }
   }
