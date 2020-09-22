@@ -231,11 +231,23 @@ input[type="file"] {
     }
 
     &.active {
-      background-color: rgba($color: $shade-dark-color, $alpha: 0.1);
+      color: $main-color;
       font-weight: 700;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border-radius: $border-radius;
+      position: relative;
+
+      &::after {
+        @extend .o-ticket;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 0;
+        [dir="rtl"] & {
+          right: unset;
+          left: 0;
+        }
+      }
     }
   }
 }
