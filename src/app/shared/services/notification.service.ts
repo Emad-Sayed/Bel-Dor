@@ -19,6 +19,6 @@ export class NotificationService {
   }
 
   showError(message?: string, title = 'An error occurred!') {
-    this.toastrService.error(message, title);
+    this.toastrService.error(message, title, { enableHtml: true });
   }
 }
