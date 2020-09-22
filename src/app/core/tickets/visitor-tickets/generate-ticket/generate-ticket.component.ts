@@ -1,7 +1,9 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { contentAnimation } from 'src/app/shared/animations/animations';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { VisitorTicketsService } from '../visitor-tickets.service';
 
@@ -31,7 +33,9 @@ export class GenerateTicketComponent implements OnInit {
   constructor(
     private _visitorTicketService: VisitorTicketsService,
     public _translationService: TranslationsService,
-    private renderer: Renderer2
+    private _notificationService: NotificationService,
+    private renderer: Renderer2,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -89,11 +93,15 @@ export class GenerateTicketComponent implements OnInit {
         branchId: this.branchDetail['branchId'],
         departementId: this.selectedDep['departementId']
       };
-      console.log(data);
   
       this._visitorTicketService.generateTicket(data)
       .subscribe(res => {
-        console.log(res);
+        // this.router.navigateByUrl('/tickets');
+        this._notificationService.showSuccess('Click to go your ticket', 'Ticket generated successfully!');
+      },
+      err => {
+        const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
+        this._notificationService.showError(errorMessage);
       });
     }
   }
