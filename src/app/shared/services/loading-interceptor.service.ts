@@ -12,8 +12,8 @@ import {
   ComponentFactoryResolver,
   Injector,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { SpinnerService } from '../components/spinner/service/spinner.service';
 import { SpinnerComponent } from '../components/spinner/spinner.component';
 
@@ -50,6 +50,15 @@ export class LoadingInterceptor implements HttpInterceptor {
     }
 
     return next.handle(httpRequest).pipe(
+      catchError(
+        res => {
+          console.log(res);
+          this.requestCounter--;
+          if (this.requestCounter == 0 && this.spinnerRef)
+            this.spinnerRef.clear();
+          return throwError(res);
+        }
+      ),
       tap((req) => {
         if (req instanceof HttpResponseBase) {
           this.requestCounter--;
