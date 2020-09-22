@@ -97,7 +97,8 @@ export class GenerateTicketComponent implements OnInit {
       this._visitorTicketService.generateTicket(data)
       .subscribe(res => {
         // this.router.navigateByUrl('/tickets');
-        this._notificationService.showSuccess('Click to go your ticket', 'Ticket generated successfully!');
+        this._notificationService
+        .showSuccess(`Your ticket number ${res['data']['ticketNumber']} <a class="e-link" routerLink="/tickets">Check it out.</a>`, 'Ticket generated successfully!');
       },
       err => {
         const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
