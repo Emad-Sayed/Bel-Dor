@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Toast, ToastPackage, ToastrService } from 'ngx-toastr';
+
+import { toastAnimation } from "../../animations/animations";
 
 @Component({
-  selector: 'app-toastr',
+  selector: '[app-toastr]',
   templateUrl: './toastr.component.html',
-  styleUrls: ['./toastr.component.scss']
+  styleUrls: ['./toastr.component.scss'],
+  animations: [
+    toastAnimation
+  ],
+  preserveWhitespaces: false
 })
-export class ToastrComponent implements OnInit {
+export class ToastrComponent  extends Toast {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    protected toastrService: ToastrService,
+    public toastPackage: ToastPackage
+    ) {
+    super(toastrService, toastPackage);
   }
 
 }
