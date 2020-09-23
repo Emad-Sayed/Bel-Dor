@@ -196,3 +196,58 @@ input[type="file"] {
     color: $main-color;
   }
 }
+
+.e-form-select {
+  display: none;
+  border-radius: $border-radius;
+  background-color: $main-light-color;
+  max-height: 30vh;
+  overflow-y: auto;
+  border: 1px solid $main-color;
+  position: absolute;
+  top: calc(100% + 10px);
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+
+  &__item {
+    margin: 0 2rem;
+    // padding: 1.5rem 0;
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid $main-color;  
+    }
+  }
+
+  &__label {
+    width: 100%;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    @include transition(padding);
+
+    &:hover:not(.active) {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+
+    &.active {
+      color: $main-color;
+      font-weight: 700;
+      position: relative;
+
+      &::after {
+        @extend .o-ticket;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 0;
+        [dir="rtl"] & {
+          right: unset;
+          left: 0;
+        }
+      }
+    }
+  }
+}

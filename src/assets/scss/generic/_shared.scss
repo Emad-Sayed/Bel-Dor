@@ -37,3 +37,13 @@ main {
   position: relative;
   z-index: 10;
 }
+
+mark {
+  background-color: $main-color;
+  color: $main-dark-color;
+  @include square(20px);
+  border-radius: $border-radius;
+  display: inline-block;
+  line-height: 1.7;
+  text-align: center;
+}

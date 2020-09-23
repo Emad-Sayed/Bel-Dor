@@ -4,7 +4,7 @@
   background-color: $main-color;
   color: $main-dark-color;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: capitalize;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
@@ -14,6 +14,17 @@
     width: auto;
     height: auto;
     padding: 10px 40px;
+  }
+
+  &--withIcon {
+    margin: 2rem auto;
+    margin-bottom: 0;
+
+    .bel-door {
+      font-size: 4rem;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
   }
 
   &:hover:not(:disabled) {

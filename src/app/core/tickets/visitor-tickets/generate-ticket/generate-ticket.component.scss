@@ -1,0 +1,9 @@
+form {
+  margin-top: 4rem;
+}
+
+@media all and (max-width: 768px) {
+  .e-form-group {
+    margin-bottom: 3rem;
+  }
+}
