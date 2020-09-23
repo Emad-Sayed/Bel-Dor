@@ -102,9 +102,7 @@ export class GenerateTicketComponent implements OnInit {
       },
       err => {
         const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
-        // this._notificationService.showError(`Your ticket number <mark>${err['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
-        this._notificationService.showError(`${errorMessage}`);
-        // this._notificationService.showError(`${errorMessage} <br> Your current active ticket number is <mark>${err['error']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
+        this._notificationService.showError(`${errorMessage} <br> Your current active ticket number is <mark>${err['error']['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
       });
     }
   }
