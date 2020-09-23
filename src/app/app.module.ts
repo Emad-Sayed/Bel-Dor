@@ -48,8 +48,7 @@ export function tokenGetter() {
     ToastrModule.forRoot({
       toastComponent: ToastrComponent,
       closeButton: true,
-      extendedTimeOut: 2000,
-      disableTimeOut: true
+      extendedTimeOut: 2000
     })
   ],
   entryComponents: [ToastrComponent],
