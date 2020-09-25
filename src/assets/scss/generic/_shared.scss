@@ -49,3 +49,34 @@ mark {
   line-height: 1.7;
   text-align: center;
 }
+
+.carousel {
+  .slick-slide {outline: none;}
+  .slick-prev, .slick-next {
+    z-index: 5;
+  }
+  .slick-prev::before, .slick-next::before {
+    color: $main-color;
+    opacity: 0.5;
+    font-family: 'bel-door' !important;
+  }
+  .slick-prev::before{
+    content: "\e910";
+  }
+  .slick-next::before {
+    content: "\e90d";
+  }
+  .slick-prev:hover::before, .slick-next:hover::before {
+    color: $main-color;
+    opacity: 1;
+  }
+  .slick-disabled {
+    display: none !important;
+  }
+  .slick-slide {
+    margin-right: 10px;
+  }
+  .slick-track {
+    display: flex;
+  }
+}
