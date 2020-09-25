@@ -35,7 +35,7 @@ export class VisitorTicketsComponent implements OnInit {
       statusIds: [1],
       pageSize: 100
     };
-    this._visitorTicketsService.getWaitingTickets(data)
+    this._visitorTicketsService.getVisitorTickets(data)
     .subscribe(res => {
       this.waitingTickets = res['data'];
     });
