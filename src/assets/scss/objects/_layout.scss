@@ -66,6 +66,12 @@
     font-size: 1.8rem;
     background-color: #06DAB04D;
     text-transform: capitalize;
+    &:first-of-type {
+      border-top-left-radius: $border-radius;
+    }
+    &:last-of-type {
+      border-top-right-radius: $border-radius;
+    }
 
     &--active {
       background-color: $main-color;

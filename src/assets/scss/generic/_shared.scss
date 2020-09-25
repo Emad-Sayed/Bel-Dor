@@ -27,7 +27,9 @@ body {
   background-position: center;
   background-size: cover;
 }
-
+strong {
+  font-weight: 700;
+}
 small {
   font-size: 1.3rem;
   color: $shade-dark-color;
