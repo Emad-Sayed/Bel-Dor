@@ -10,6 +10,7 @@ import { TicketHistoryComponent } from './ticket-history/ticket-history.componen
 import { VisitorTicketsRoutingModule } from './visitor-tickets-routing.module';
 import { TicketGraphicComponent } from 'src/app/shared/components/ticket-graphic/ticket-graphic.component';
 import { MissedTicketsComponent } from './missed-tickets/missed-tickets.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MissedTicketsComponent } from './missed-tickets/missed-tickets.componen
     CommonModule,
     ReactiveFormsModule,
     VisitorTicketsRoutingModule,
+    SlickCarouselModule,
 
     SpinnerModule,
   ],
