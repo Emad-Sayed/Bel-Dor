@@ -3,7 +3,7 @@
     <button 
     class="o-tabs__tab"
     [routerLink]="['/tickets']">
-      Current Tickets
+      Waiting Tickets
     </button>
 
     <button class="o-tabs__tab o-tabs__tab--active">
@@ -12,8 +12,50 @@
 
     <button 
     class="o-tabs__tab" [routerLink]="['/tickets/history']">
-      Previous Tickets
+      Closed Tickets
     </button>
+  </div>
+
+  <div class="tickets">
+    <ng-template appSpinnerPlaceholder></ng-template>
+
+    <ng-container *ngIf="missedTickets.length; else noTickets">
+      <ngx-slick-carousel class="carousel" 
+                        #slickModal="slick-carousel" 
+                        [config]="slideConfig">
+        <div ngxSlickItem  class="ticket" *ngFor="let ticket of missedTickets">
+
+          <div class="ticket__graphic">
+            <app-ticket-graphic [ticketNumber]="ticket['ticketNumber']"></app-ticket-graphic>
+          </div>
+
+          <div class="ticket__info">
+            <p>
+              branch: 
+              <strong>{{_translationService.isEnglish? ticket.branchNameEN: ticket.branchNameAR}}</strong>
+            </p>
+            <p>
+              department: 
+              <strong>{{_translationService.isEnglish? ticket.departementNameEN: ticket.departementNameAR}}</strong>
+            </p>
+            <p>
+              Current ticket: 
+              <strong>{{ticket.currentNumber}}</strong>
+            </p>
+          </div>
+
+          <p class="ticket__date">
+            <strong>{{ticket.createTime | date: 'shortTime'}}</strong>
+            {{ticket.createTime | date}}
+          </p>
+          
+        </div>
+      </ngx-slick-carousel>
+    </ng-container>
+
+    <ng-template #noTickets>
+      <h5>There is no missed tickets</h5>
+    </ng-template>
   </div>
   
 </section>
