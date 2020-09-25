@@ -1,7 +1,8 @@
 <section class="o-section-content o-card" @animateContent>
   <h2>Generate Ticket</h2>
 
-  <form class="row" [formGroup]="generateForm">
+  <form class="row position-relative" [formGroup]="generateForm">
+    <ng-template appSpinnerPlaceholder></ng-template>
     <!-- Branch select -->
     <div class="col-md-6">
       <fieldset class="e-form-group ">
@@ -14,7 +15,6 @@
           (focus)="openListSelect(branchInput, braList)"
           readonly
         />
-        <ng-template appSpinnerPlaceholder></ng-template>
         <ul class="e-form-select" #braList>
           <li class="e-form-select__item" *ngFor="let branch of branches">
             <label class="e-form-select__label" [ngClass]="{'active': branchDetail.branchId == branch.id}"  [for]="branch.nameEN">

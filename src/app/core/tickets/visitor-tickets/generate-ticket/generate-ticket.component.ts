@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
 import { contentAnimation } from 'src/app/shared/animations/animations';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -16,7 +16,7 @@ import { VisitorTicketsService } from '../visitor-tickets.service';
   ]
 })
 export class GenerateTicketComponent implements OnInit {
-  @ViewChild(SpinnerDirective) spinnerPlaceholder: SpinnerDirective;
+  @ViewChild(SpinnerDirective, {static: true, read: SpinnerDirective}) spinnerPlaceholder: SpinnerDirective;
   
   generateForm: FormGroup = new FormGroup({
     branch: new FormControl('', Validators.required),
@@ -34,11 +34,12 @@ export class GenerateTicketComponent implements OnInit {
     private _visitorTicketService: VisitorTicketsService,
     public _translationService: TranslationsService,
     private _notificationService: NotificationService,
-    private renderer: Renderer2,
-    private router: Router,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.spinnerPlaceholder.sendViewContainer();
+
     this._visitorTicketService.getBranches()
     .subscribe(res => {
       this.branches = res['data'];
