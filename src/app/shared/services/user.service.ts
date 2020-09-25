@@ -10,6 +10,9 @@ export class UserService {
   isLogged$ = new BehaviorSubject(false);
 
   constructor(private jwtHelper: JwtHelperService) {
+    if (this.jwtHelper.isTokenExpired(localStorage.getItem('token'))) {
+      this.removeUser();
+    }
     this.updateUser();
   }
 
