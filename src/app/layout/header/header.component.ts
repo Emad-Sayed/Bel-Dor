@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
       router: '/home',
     },
     {
-      name: 'about us',
+      name: 'about-us',
       router: '/about-us',
     },
     {

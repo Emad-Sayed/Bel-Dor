@@ -4,12 +4,12 @@
     routerLink="/register"
     *ngIf="!(_userService.isLogged$ | async); else userSetting"
   >
-    Register
+    {{'register' | translate}}
   </button>
 
   <ng-template #userSetting>
     <button (click)="logout()" class="e-secondary-btn">
-      {{ "logout" | translate }}
+      {{ 'logout' | translate }}
     </button>
   </ng-template>
 
@@ -64,11 +64,11 @@
       class="o-nav__link e-link"
       *ngIf="_userService.isLogged$ | async; else loginLink"
     >
-      {{ "my-tickets" | translate }}
+      {{ 'my-tickets' | translate }}
     </a>
     <ng-template #loginLink>
       <button routerLink="/login" class="e-secondary-btn">
-        {{ "login" | translate }}
+        {{ 'login' | translate }}
       </button>
     </ng-template>
   </nav>
