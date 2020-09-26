@@ -15,10 +15,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    TranslateModule,
 
     SpinnerModule
   ],
   exports: [
+    CommonModule,
     ReactiveFormsModule,
     TranslateModule,
     
