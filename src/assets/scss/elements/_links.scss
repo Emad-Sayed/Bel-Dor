@@ -17,6 +17,9 @@
       left: 0;
       right: 0;
       margin: 0 auto;
+      [dir="rtl"] & {
+        bottom: -15px;
+      }
     }
   }
 
