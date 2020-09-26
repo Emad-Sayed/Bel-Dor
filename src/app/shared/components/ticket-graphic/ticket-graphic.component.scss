@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+}
+
+.ticket-num {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 32px;
+  font-weight: 700;
+  color: #cbeef3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

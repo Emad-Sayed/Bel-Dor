@@ -19,4 +19,12 @@ export class VisitorTicketsService {
     return this.http$.post(`${environment.baseUrl}Ticket`, data);
   }
 
+  getVisitorTickets(data) {
+    let params = new HttpParams();
+    params = params.set('statusIds', data.statusIds);
+    params = params.set('pageSize', data.pageSize);
+
+    return this.http$.get(`${environment.baseUrl}Ticket/VisitorDailyTickets`, {params: params});
+  }
+
 }

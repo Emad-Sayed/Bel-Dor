@@ -1,14 +1,17 @@
 <section class="o-card o-section-content">
   <div class="o-tabs">
-    <button class="o-tabs__tab o-tabs__tab--active" [routerLink]="['/tickets']">
+    <button 
+    class="o-tabs__tab"
+    [routerLink]="['/tickets']">
       Waiting Tickets
     </button>
 
-    <button class="o-tabs__tab" [routerLink]="['/tickets/missed']">
+    <button class="o-tabs__tab o-tabs__tab--active">
       Missed Tickets
     </button>
 
-    <button class="o-tabs__tab" [routerLink]="['/tickets/history']">
+    <button 
+    class="o-tabs__tab" [routerLink]="['/tickets/history']">
       Closed Tickets
     </button>
   </div>
@@ -16,11 +19,11 @@
   <div class="tickets">
     <ng-template appSpinnerPlaceholder></ng-template>
 
-    <ng-container *ngIf="waitingTickets.length; else noTickets">
+    <ng-container *ngIf="missedTickets.length; else noTickets">
       <ngx-slick-carousel class="carousel" 
                         #slickModal="slick-carousel" 
                         [config]="slideConfig">
-        <div ngxSlickItem  class="ticket" *ngFor="let ticket of waitingTickets">
+        <div ngxSlickItem  class="ticket" *ngFor="let ticket of missedTickets">
 
           <div class="ticket__graphic">
             <app-ticket-graphic [ticketNumber]="ticket['ticketNumber']"></app-ticket-graphic>
@@ -51,22 +54,8 @@
     </ng-container>
 
     <ng-template #noTickets>
-      <h5>There is no active tickets</h5>
-
-      <button
-        class="e-main-btn e-main-btn--withPadding e-main-btn--withIcon"
-        routerLink="generate"
-      >
-        <span class="bel-door icon-ticket-add">
-          <span class="path1"></span>
-          <span class="path2"></span>
-          <span class="path3"></span>
-          <span class="path4"></span>
-          <span class="path5"></span>
-          <span class="path6"></span>
-        </span>
-        Generate Ticket
-      </button>
+      <h5>There is no missed tickets</h5>
     </ng-template>
   </div>
+  
 </section>

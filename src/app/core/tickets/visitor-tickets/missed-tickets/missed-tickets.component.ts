@@ -4,11 +4,11 @@ import { TranslationsService } from 'src/app/shared/services/translations.servic
 import { VisitorTicketsService } from '../visitor-tickets.service';
 
 @Component({
-  selector: 'app-ticket-history',
-  templateUrl: './ticket-history.component.html',
-  styleUrls: ['./ticket-history.component.scss']
+  selector: 'app-missed-tickets',
+  templateUrl: './missed-tickets.component.html',
+  styleUrls: ['./missed-tickets.component.scss']
 })
-export class TicketHistoryComponent implements OnInit {
+export class MissedTicketsComponent implements OnInit {
   @ViewChild(SpinnerDirective, {static: true, read: SpinnerDirective}) spinnerPlaceholder: SpinnerDirective;
 
   slideConfig = {
@@ -21,7 +21,7 @@ export class TicketHistoryComponent implements OnInit {
     rtl: !this._translationService.isEnglish
   };
 
-  closedTickets = [];
+  missedTickets = [];
 
   constructor(
     private _visitorTicketsService: VisitorTicketsService,
@@ -32,12 +32,12 @@ export class TicketHistoryComponent implements OnInit {
     this.spinnerPlaceholder.sendViewContainer();
 
     const data = {
-      statusIds: [3],
+      statusIds: [4],
       pageSize: 100
     };
     this._visitorTicketsService.getVisitorTickets(data)
     .subscribe(res => {
-      this.closedTickets = res['data'];
+      this.missedTickets = res['data'];
     });
   }
 

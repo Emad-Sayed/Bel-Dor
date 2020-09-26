@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'bel-door';
-  src:  url('fonts/bel-door.eot?m0j4hu');
-  src:  url('fonts/bel-door.eot?m0j4hu#iefix') format('embedded-opentype'),
-    url('fonts/bel-door.ttf?m0j4hu') format('truetype'),
-    url('fonts/bel-door.woff?m0j4hu') format('woff'),
-    url('fonts/bel-door.svg?m0j4hu#bel-door') format('svg');
+  src:  url('fonts/bel-door.eot?ak1dpr');
+  src:  url('fonts/bel-door.eot?ak1dpr#iefix') format('embedded-opentype'),
+    url('fonts/bel-door.ttf?ak1dpr') format('truetype'),
+    url('fonts/bel-door.woff?ak1dpr') format('woff'),
+    url('fonts/bel-door.svg?ak1dpr#bel-door') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+.bel-door {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'bel-door' !important;
   speak: never;
@@ -25,72 +25,88 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-trash-canbel-door:before {
+.icon-trash-can:before {
   content: "\e90c";
 }
-.icon-mapbel-door:before {
+.icon-map:before {
   content: "\e025";
 }
-.icon-streetsignbel-door:before {
+.icon-streetsign:before {
   content: "\e029";
 }
-.icon-profile-malebel-door:before {
+.icon-profile-male:before {
   content: "\e040";
 }
-.icon-ticket-addbel-door .path1:before {
+.icon-arrow-right:before {
+  content: "\e90d";
+  color: #06dab0;
+}
+.icon-arrow-up:before {
+  content: "\e90e";
+  color: #06dab0;
+}
+.icon-arrow-down:before {
+  content: "\e90f";
+  color: #06dab0;
+}
+.icon-arrow-left:before {
+  content: "\e910";
+  color: #06dab0;
+}
+.icon-ticket-add .path1:before {
   content: "\e900";
   color: rgb(6, 218, 176);
 }
-.icon-ticket-addbel-door .path2:before {
+.icon-ticket-add .path2:before {
   content: "\e901";
   margin-left: -0.5302734375em;
   color: rgb(255, 255, 255);
 }
-.icon-ticket-addbel-door .path3:before {
+.icon-ticket-add .path3:before {
   content: "\e902";
   margin-left: -0.5302734375em;
   color: rgb(255, 255, 255);
 }
-.icon-ticket-addbel-door .path4:before {
+.icon-ticket-add .path4:before {
   content: "\e903";
   margin-left: -0.5302734375em;
   color: rgb(202, 238, 242);
 }
-.icon-ticket-addbel-door .path5:before {
+.icon-ticket-add .path5:before {
   content: "\e904";
   margin-left: -0.5302734375em;
   color: rgb(6, 218, 176);
 }
-.icon-ticket-addbel-door .path6:before {
+.icon-ticket-add .path6:before {
   content: "\e905";
   margin-left: -0.5302734375em;
   color: rgb(6, 218, 176);
 }
-.icon-ticket-savebel-door .path1:before {
+.icon-ticket-save .path1:before {
   content: "\e906";
   color: rgb(6, 218, 176);
 }
-.icon-ticket-savebel-door .path2:before {
+.icon-ticket-save .path2:before {
   content: "\e907";
   margin-left: -0.5302734375em;
   color: rgb(255, 255, 255);
 }
-.icon-ticket-savebel-door .path3:before {
+.icon-ticket-save .path3:before {
   content: "\e908";
   margin-left: -0.5302734375em;
   color: rgb(255, 255, 255);
 }
-.icon-ticket-savebel-door .path4:before {
+.icon-ticket-save .path4:before {
   content: "\e909";
   margin-left: -0.5302734375em;
   color: rgb(202, 238, 242);
 }
-.icon-ticket-savebel-door .path5:before {
+.icon-ticket-save .path5:before {
   content: "\e90a";
   margin-left: -0.5302734375em;
   color: rgb(6, 218, 176);
 }
-.icon-ticket-savebel-door .path6:before {
+.icon-ticket-save .path6:before {
   content: "\e90b";
   margin-left: -0.5302734375em;
   color: rgb(6, 218, 176);

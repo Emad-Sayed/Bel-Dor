@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         res => {
           this._userService.setUser(res['token']);
 
-          this.router.navigateByUrl('/tickets/my-tickets');
+          this.router.navigateByUrl('/tickets');
         }
       );
     }

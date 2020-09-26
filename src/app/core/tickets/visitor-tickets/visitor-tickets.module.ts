@@ -8,18 +8,26 @@ import { VisitorTicketsService } from './visitor-tickets.service';
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 import { TicketHistoryComponent } from './ticket-history/ticket-history.component';
 import { VisitorTicketsRoutingModule } from './visitor-tickets-routing.module';
+import { TicketGraphicComponent } from 'src/app/shared/components/ticket-graphic/ticket-graphic.component';
+import { MissedTicketsComponent } from './missed-tickets/missed-tickets.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
-  declarations: [VisitorTicketsComponent, GenerateTicketComponent, TicketHistoryComponent],
+  declarations: [
+    VisitorTicketsComponent,
+    GenerateTicketComponent,
+    TicketHistoryComponent,
+    TicketGraphicComponent,
+    MissedTicketsComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     VisitorTicketsRoutingModule,
+    SlickCarouselModule,
 
-    SpinnerModule
+    SpinnerModule,
   ],
-  providers: [
-    VisitorTicketsService
-  ]
+  providers: [VisitorTicketsService],
 })
-export class VisitorTicketsModule { }
+export class VisitorTicketsModule {}

@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
 import { contentAnimation } from 'src/app/shared/animations/animations';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -16,7 +16,7 @@ import { VisitorTicketsService } from '../visitor-tickets.service';
   ]
 })
 export class GenerateTicketComponent implements OnInit {
-  @ViewChild(SpinnerDirective) spinnerPlaceholder: SpinnerDirective;
+  @ViewChild(SpinnerDirective, {static: true, read: SpinnerDirective}) spinnerPlaceholder: SpinnerDirective;
   
   generateForm: FormGroup = new FormGroup({
     branch: new FormControl('', Validators.required),
@@ -34,11 +34,12 @@ export class GenerateTicketComponent implements OnInit {
     private _visitorTicketService: VisitorTicketsService,
     public _translationService: TranslationsService,
     private _notificationService: NotificationService,
-    private renderer: Renderer2,
-    private router: Router,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.spinnerPlaceholder.sendViewContainer();
+
     this._visitorTicketService.getBranches()
     .subscribe(res => {
       this.branches = res['data'];
@@ -88,7 +89,6 @@ export class GenerateTicketComponent implements OnInit {
 
   generateTicket() {
     if(this.generateForm.valid) {
-      this.spinnerPlaceholder.sendViewContainer();
       const data = {
         branchId: this.branchDetail['branchId'],
         departementId: this.selectedDep['departementId']
@@ -98,11 +98,11 @@ export class GenerateTicketComponent implements OnInit {
       .subscribe(res => {
         // this.router.navigateByUrl('/tickets');
         this._notificationService
-        .showSuccess(`Your ticket number <mark>${res['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`, 'Ticket generated successfully!');
+        .showSuccess(`Your ticket number <mark>${res['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">Check it out.</a>`, 'Ticket generated successfully!');
       },
       err => {
         const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
-        this._notificationService.showError(`${errorMessage} <br> Your current active ticket number is <mark>${err['error']['data']['ticketNumber']}</mark> <a class="e-link" routerLink="/tickets">Check it out.</a>`);
+        this._notificationService.showError(`${errorMessage} <br> Your current active ticket number is <mark>${err['error']['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">Check it out.</a>`);
       });
     }
   }

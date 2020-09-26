@@ -66,6 +66,23 @@
     font-size: 1.8rem;
     background-color: #06DAB04D;
     text-transform: capitalize;
+    &:first-of-type {
+      border-top-left-radius: $border-radius;
+    }
+    &:last-of-type {
+      border-top-right-radius: $border-radius;
+    }
+
+    [dir="rtl"] & {
+      &:first-of-type {
+        border-top-right-radius: $border-radius;
+        border-top-left-radius: 0;
+      }
+      &:last-of-type {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: 0;
+      }
+    }
 
     &--active {
       background-color: $main-color;
