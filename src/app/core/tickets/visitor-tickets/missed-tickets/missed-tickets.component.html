@@ -3,16 +3,16 @@
     <button 
     class="o-tabs__tab"
     [routerLink]="['/tickets']">
-      Waiting Tickets
+      {{'waiting-tickets' | translate}}
     </button>
 
     <button class="o-tabs__tab o-tabs__tab--active">
-      Missed Tickets
+      {{'missed-tickets' | translate}}
     </button>
 
     <button 
     class="o-tabs__tab" [routerLink]="['/tickets/history']">
-      Closed Tickets
+      {{'closed-tickets' | translate}}
     </button>
   </div>
 
@@ -54,7 +54,7 @@
     </ng-container>
 
     <ng-template #noTickets>
-      <h5>There is no missed tickets</h5>
+      <h5>{{'there-is-no-missed' | translate}}</h5>
     </ng-template>
   </div>
   

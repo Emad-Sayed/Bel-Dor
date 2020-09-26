@@ -1,5 +1,5 @@
 <section class="o-section-content o-card" @animateContent>
-  <h2>Generate Ticket</h2>
+  <h2>{{'generate-ticket' | translate}}</h2>
 
   <form class="row position-relative" [formGroup]="generateForm">
     <ng-template appSpinnerPlaceholder></ng-template>
@@ -33,8 +33,8 @@
           </li>
         </ul>
         <label for="branches" class="e-form-label e-form-label--overInput">
-          Select Branch
-          <small>(required)</small>
+          {{ 'select-branch' | translate}}
+          <small>({{'required' | translate}})</small>
         </label>
       </fieldset>
     </div>
@@ -76,8 +76,8 @@
           </li>
         </ul>
         <label for="departments" class="e-form-label e-form-label--overInput">
-          Select Department
-          <small>(required)</small>
+          {{'select-department' | translate}}
+          <small>({{'required' | translate}})</small>
         </label>
       </fieldset>
     </div>
@@ -91,7 +91,7 @@
         <span class="path5"></span>
         <span class="path6"></span>
       </span>
-      Generate
+      {{'generate' | translate}}
     </button>
   </form>
 </section>

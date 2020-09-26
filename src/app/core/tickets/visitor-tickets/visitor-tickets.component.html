@@ -1,15 +1,15 @@
 <section class="o-card o-section-content">
   <div class="o-tabs">
     <button class="o-tabs__tab o-tabs__tab--active" [routerLink]="['/tickets']">
-      Waiting Tickets
+      {{'waiting-tickets' | translate}}
     </button>
 
     <button class="o-tabs__tab" [routerLink]="['/tickets/missed']">
-      Missed Tickets
+      {{'missed-tickets' | translate}}
     </button>
 
     <button class="o-tabs__tab" [routerLink]="['/tickets/history']">
-      Closed Tickets
+      {{'closed-tickets' | translate}}
     </button>
   </div>
 
@@ -28,15 +28,15 @@
 
           <div class="ticket__info">
             <p>
-              branch: 
+              {{'branch' | translate}}: 
               <strong>{{_translationService.isEnglish? ticket.branchNameEN: ticket.branchNameAR}}</strong>
             </p>
             <p>
-              department: 
+              {{'department' | translate}}: 
               <strong>{{_translationService.isEnglish? ticket.departementNameEN: ticket.departementNameAR}}</strong>
             </p>
             <p>
-              Current ticket: 
+              {{'current-ticket' | translate}}: 
               <strong>{{ticket.currentNumber}}</strong>
             </p>
           </div>
@@ -51,7 +51,7 @@
     </ng-container>
 
     <ng-template #noTickets>
-      <h5>There is no active tickets</h5>
+      <h5>{{'there-is-no-waiting' | translate}}</h5>
 
       <button
         class="e-main-btn e-main-btn--withPadding e-main-btn--withIcon"

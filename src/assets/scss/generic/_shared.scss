@@ -75,6 +75,10 @@ mark {
   }
   .slick-slide {
     margin-right: 10px;
+    [dir="rtl"] & {
+      margin-right: unset;
+      margin-left: 10px;
+    }
   }
   .slick-track {
     display: flex;

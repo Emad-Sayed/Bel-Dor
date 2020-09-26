@@ -45,10 +45,9 @@
   &:focus, &.ng-dirty {
     ~ .e-form-label--overInput {
       color: $main-color;
-      transform: translate3d(0, -40px, 0);
-      animation: labelFocused 0.5s ease-in-out;
+      animation: labelFocused 0.5s forwards;
       [dir="rtl"] & {
-        animation: labelFocusedRtl 0.5s ease-in-out;
+        animation: labelFocusedRtl 0.5s forwards;
       }
     }
   }
@@ -194,6 +193,10 @@ input[type="file"] {
     right: 5px;
     top: 10px;
     color: $main-color;
+    [dir="rtl"] & {
+      right: unset;
+      left: 5px;
+    }
   }
 }
 
@@ -209,6 +212,7 @@ input[type="file"] {
   width: 100%;
   z-index: 2;
   cursor: pointer;
+  text-align: start;
 
   &__item {
     margin: 0 2rem;

@@ -24,6 +24,11 @@
       font-size: 4rem;
       vertical-align: middle;
       margin-right: 10px;
+
+      [dir="rtl"] & {
+        margin-right: unset;
+        margin-left: 10px;
+      }
     }
   }
 
