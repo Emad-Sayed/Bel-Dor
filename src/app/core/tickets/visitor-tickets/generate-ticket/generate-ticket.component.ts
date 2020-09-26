@@ -89,7 +89,6 @@ export class GenerateTicketComponent implements OnInit {
 
   generateTicket() {
     if(this.generateForm.valid) {
-      this.spinnerPlaceholder.sendViewContainer();
       const data = {
         branchId: this.branchDetail['branchId'],
         departementId: this.selectedDep['departementId']
