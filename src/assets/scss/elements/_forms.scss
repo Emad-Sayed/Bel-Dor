@@ -193,6 +193,10 @@ input[type="file"] {
     right: 5px;
     top: 10px;
     color: $main-color;
+    [dir="rtl"] & {
+      right: unset;
+      left: 5px;
+    }
   }
 }
 
