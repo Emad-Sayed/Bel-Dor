@@ -1,0 +1,64 @@
+<section class="o-section-content o-card" >
+  <h2>{{'login-beldoor' | translate}}</h2>
+  <p class="e-paragraph e-paragraph--center">
+    {{'login-paragraph' | translate}}
+  </p>
+  
+  <form class="e-form" (ngSubmit)="loginVisitor()" [formGroup]="loginForm">
+    <fieldset class="e-form-group e-form-group--eightyWidth" 
+    [ngClass]="{'e-valid-input': loginForm.controls.username.valid}">
+      <input 
+      id="username"
+      autocomplete="username"
+      autofocus
+      tabindex="1"
+      type="text" 
+      class="e-form-control"
+      formControlName="username">
+      <label for="username" class="e-form-label e-form-label--overInput">
+        {{'username' | translate}} 
+        <small>({{'required' | translate}})</small>
+      </label>
+
+      <p class="e-form-error" *ngIf="loginForm.controls.username.touched && usernameErrors">
+        {{usernameErrors}}
+      </p>
+    </fieldset>
+
+    <fieldset class="e-form-group e-form-group--eightyWidth"
+    [ngClass]="{'e-valid-input': loginForm.controls.password.valid}">
+      <input 
+      id="password"
+      autocomplete="current-password"
+      tabindex="3"
+      type="password" 
+      class="e-form-control"
+      formControlName="password">
+      <label for="password" class="e-form-label e-form-label--overInput">
+        {{'password' | translate}} 
+        <small>({{'required' | translate}})</small>
+      </label>
+
+      <p class="e-form-error" *ngIf="loginForm.controls.password.touched && passwordErrors">
+        {{passwordErrors}}
+      </p>
+    </fieldset>
+
+    <div class="e-form-group--eightyWidth login__footer">
+
+      <label for="rememberMe">
+        <input type="checkbox" tabindex="4" formControlName="rememberMe" class="e-form-control--checkbox">
+        <span class="custom-checkbox"></span>
+        {{'remember-me' | translate}}
+      </label>
+
+      <a routerLink="/forgot-password" class="e-link">{{'forgot-password' | translate}}</a>
+      
+    </div>
+  
+    <button class="e-main-btn e-form-btn" [disabled]="loginForm.invalid" type="submit">
+      <ng-template appSpinnerPlaceholder></ng-template>
+      {{'done' | translate}}
+    </button>
+  </form>
+</section>

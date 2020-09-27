@@ -1,2 +1,15 @@
-{{ 'main' | translate }}
-<button (click)="changeLang()">Change</button>
+<app-header></app-header>
+
+<div class="container">
+  
+  
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+
+</div>
+
+<span class="ticket-graphic" @ticketAnim *ngIf="showPageContent"></span>
+
+<app-footer></app-footer>

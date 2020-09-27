@@ -1,0 +1,90 @@
+html {
+  &[dir="ltr"] {
+    font-family: 'Gayathri', sans-serif;
+  }
+  &[dir="rtl"] {
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  font-weight: 400;
+  font-size: 62.5%;
+  color: $main-dark-color;
+
+  @media screen and (max-width: 991.9px) {
+    font-size: 58%;
+  }
+}
+body {
+  font-size: 16px; /* px fallback */
+  font-size: 1.6rem; /* default font-size for document */
+  overflow: hidden;
+  background-color: $main-dark-color;
+  width: 100vw;
+  height: 100vh;
+  
+  background-image: url('../../icons/pattern.svg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+}
+strong {
+  font-weight: 700;
+}
+small {
+  font-size: 1.3rem;
+  color: $shade-dark-color;
+}
+
+main {
+  position: relative;
+  z-index: 10;
+}
+
+mark {
+  background-color: $main-color;
+  color: $main-dark-color;
+  @include square(20px);
+  border-radius: $border-radius;
+  display: inline-block;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.carousel {
+  .slick-slide {outline: none;}
+  .slick-prev, .slick-next {
+    z-index: 5;
+  }
+  .slick-prev::before, .slick-next::before {
+    color: $main-color;
+    opacity: 0.5;
+    font-family: 'bel-door' !important;
+  }
+  .slick-prev::before{
+    content: "\e910";
+  }
+  .slick-next::before {
+    content: "\e90d";
+  }
+  .slick-prev:hover::before, .slick-next:hover::before {
+    color: $main-color;
+    opacity: 1;
+  }
+  .slick-disabled {
+    display: none !important;
+  }
+  .slick-slide {
+    margin-right: 10px;
+    [dir="rtl"] & {
+      margin-right: unset;
+      margin-left: 10px;
+    }
+  }
+  .slick-track {
+    display: flex;
+  }
+}
+
+app-spinner {
+  background-color: inherit;
+}

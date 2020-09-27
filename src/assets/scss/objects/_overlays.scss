@@ -1,0 +1,16 @@
+.o-pattern {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../icons/pattern.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 1;
+}
+
+.o-ticket {
+  display: inline-block;
+  @include square(10px);
+  background-color: $main-color;
+  border-radius: 2px;
+}

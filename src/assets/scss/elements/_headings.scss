@@ -1,0 +1,34 @@
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+} 
+
+h1 {
+  font-size: 3.5rem;
+  color: $main-dark-color;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 3rem;
+  color: $main-dark-color;
+  text-align: center;
+}
+
+.e-card-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.e-main-title {
+  @extend .e-card-title;
+  font-size: 2.4rem;
+  color: $main-color;
+}
+
+.e-heading--no-spacing {
+  letter-spacing: unset;
+}

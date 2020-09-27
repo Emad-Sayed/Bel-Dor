@@ -1,0 +1,11 @@
+@import "../../../../../assets/scss/settings/variables";
+form {
+  margin-top: 4rem;
+  background-color: $main-light-color;
+}
+
+@media all and (max-width: 768px) {
+  .e-form-group {
+    margin-bottom: 3rem;
+  }
+}
