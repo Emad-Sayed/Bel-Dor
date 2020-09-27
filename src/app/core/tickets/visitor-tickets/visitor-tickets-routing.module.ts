@@ -13,14 +13,6 @@ const routes: Routes = [
   {
     path: 'generate',
     component: GenerateTicketComponent
-  },
-  {
-    path: 'history',
-    component: TicketHistoryComponent
-  },
-  {
-    path: 'missed',
-    component: MissedTicketsComponent
   }
 ];
 
