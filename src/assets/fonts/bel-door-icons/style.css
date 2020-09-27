@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'bel-door';
-  src:  url('fonts/bel-door.eot?ak1dpr');
-  src:  url('fonts/bel-door.eot?ak1dpr#iefix') format('embedded-opentype'),
-    url('fonts/bel-door.ttf?ak1dpr') format('truetype'),
-    url('fonts/bel-door.woff?ak1dpr') format('woff'),
-    url('fonts/bel-door.svg?ak1dpr#bel-door') format('svg');
+  src:  url('fonts/bel-door.eot?p8iiy5');
+  src:  url('fonts/bel-door.eot?p8iiy5#iefix') format('embedded-opentype'),
+    url('fonts/bel-door.ttf?p8iiy5') format('truetype'),
+    url('fonts/bel-door.woff?p8iiy5') format('woff'),
+    url('fonts/bel-door.svg?p8iiy5#bel-door') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-up:before {
+  content: "\e90d";
+  color: #06dab0;
+}
+.icon-arrow-down:before {
+  content: "\e90e";
+  color: #06dab0;
+}
+.icon-arrow-left:before {
+  content: "\e90f";
+  color: #06dab0;
+}
+.icon-arrow-right:before {
+  content: "\e910";
+  color: #06dab0;
+}
 .icon-trash-can:before {
   content: "\e90c";
 }
@@ -36,22 +52,6 @@
 }
 .icon-profile-male:before {
   content: "\e040";
-}
-.icon-arrow-right:before {
-  content: "\e90d";
-  color: #06dab0;
-}
-.icon-arrow-up:before {
-  content: "\e90e";
-  color: #06dab0;
-}
-.icon-arrow-down:before {
-  content: "\e90f";
-  color: #06dab0;
-}
-.icon-arrow-left:before {
-  content: "\e910";
-  color: #06dab0;
 }
 .icon-ticket-add .path1:before {
   content: "\e900";
