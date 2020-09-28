@@ -1,0 +1,9 @@
+.o-card {
+  width: 80%;
+  margin: auto;
+  padding: 4rem;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
