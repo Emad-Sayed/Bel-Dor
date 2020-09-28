@@ -64,10 +64,10 @@ mark {
     border-radius: 50%;
   }
   .slick-prev::before{
-    content: "\e910";
+    content: "\e90f";
   }
   .slick-next::before {
-    content: "\e90d";
+    content: "\e910";
   }
   .slick-prev:hover::before, .slick-next:hover::before {
     color: $main-color;
@@ -77,11 +77,7 @@ mark {
     display: none !important;
   }
   .slick-slide {
-    margin-right: 10px;
-    [dir="rtl"] & {
-      margin-right: unset;
-      margin-left: 10px;
-    }
+    margin: 0 10px;
   }
   .slick-track {
     display: flex;
