@@ -26,6 +26,9 @@ export class VisitorTicketsComponent implements OnInit {
 
   param: Params;
 
+  feedbackDetails = {};
+  isFeedbackShown = false;
+
   constructor(
     private _visitorTicketsService: VisitorTicketsService,
     public _translationService: TranslationsService,
@@ -59,6 +62,16 @@ export class VisitorTicketsComponent implements OnInit {
         });
       }
     );
+  }
+
+  showFeedbackDetails(id: string) {
+    this._visitorTicketsService.getClosedTicketInfo(id)
+    .subscribe(res => {
+      console.log(res);
+      this.feedbackDetails = res['data'];
+      this.isFeedbackShown = true;      
+
+    });
   }
 
 }
