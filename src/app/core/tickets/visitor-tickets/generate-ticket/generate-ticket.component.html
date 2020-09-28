@@ -5,7 +5,7 @@
     <ng-template appSpinnerPlaceholder></ng-template>
     <!-- Branch select -->
     <div class="col-md-6">
-      <fieldset class="e-form-group ">
+      <fieldset class="e-form-group e-form-group--withIcon">
         <input
           type="text"
           id="branches"
@@ -32,16 +32,18 @@
             </label>
           </li>
         </ul>
+        <span class="bel-door icon-map label-icon" *ngIf="!branchDetail?.branchId"></span>
         <label for="branches" class="e-form-label e-form-label--overInput">
           {{ 'select-branch' | translate}}
           <small>({{'required' | translate}})</small>
         </label>
+        <span class="bel-door icon-arrow-down"></span>
       </fieldset>
     </div>
 
     <!-- departments select -->
     <div class="col-md-6">
-      <fieldset class="e-form-group ">
+      <fieldset class="e-form-group e-form-group--withIcon">
         <input
           type="text"
           class="e-form-control"
@@ -75,10 +77,12 @@
             </label>
           </li>
         </ul>
+        <span class="bel-door icon-streetsign label-icon" *ngIf="!selectedDep"></span>
         <label for="departments" class="e-form-label e-form-label--overInput">
           {{'select-department' | translate}}
           <small>({{'required' | translate}})</small>
         </label>
+        <span class="bel-door icon-arrow-down"></span>
       </fieldset>
     </div>
 

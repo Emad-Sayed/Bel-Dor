@@ -1,72 +1,94 @@
 <section class="o-card o-section-content">
   <div class="o-tabs">
-    <button class="o-tabs__tab o-tabs__tab--active" [routerLink]="['/tickets']">
-      {{'waiting-tickets' | translate}}
+    <button class="o-tabs__tab" 
+    [routerLink]="['/tickets']"
+    [ngClass]="{'o-tabs__tab--active': !param.ticketType}">
+      {{ "waiting-tickets" | translate }}
     </button>
 
-    <button class="o-tabs__tab" [routerLink]="['/tickets/missed']">
-      {{'missed-tickets' | translate}}
+    <button
+      class="o-tabs__tab"
+      [ngClass]="{'o-tabs__tab--active':param.ticketType === 'missed'}"
+      [routerLink]="['/tickets']"
+      [queryParams]="{ ticketType: 'missed' }"
+    >
+      {{ "missed-tickets" | translate }}
     </button>
 
-    <button class="o-tabs__tab" [routerLink]="['/tickets/history']">
-      {{'closed-tickets' | translate}}
+    <button
+      class="o-tabs__tab"
+      [ngClass]="{'o-tabs__tab--active':param.ticketType === 'closed'}"
+      [routerLink]="['/tickets']"
+      [queryParams]="{ ticketType: 'closed' }"
+    >
+      {{ "closed-tickets" | translate }}
     </button>
   </div>
 
   <div class="tickets">
     <ng-template appSpinnerPlaceholder></ng-template>
 
-    <ng-container *ngIf="waitingTickets.length; else noTickets">
-      <ngx-slick-carousel class="carousel" 
-                        #slickModal="slick-carousel" 
-                        [config]="slideConfig">
-        <div ngxSlickItem  class="ticket" *ngFor="let ticket of waitingTickets">
-
+    <ng-container *ngIf="tickets.length; else noTickets">
+      <ngx-slick-carousel
+        class="carousel mt-auto"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem class="ticket" *ngFor="let ticket of tickets">
           <div class="ticket__graphic">
-            <app-ticket-graphic [ticketNumber]="ticket['ticketNumber']"></app-ticket-graphic>
+            <app-ticket-graphic
+              [ticketNumber]="ticket['ticketNumber']"
+            ></app-ticket-graphic>
           </div>
 
           <div class="ticket__info">
             <p>
-              {{'branch' | translate}}: 
-              <strong>{{_translationService.isEnglish? ticket.branchNameEN: ticket.branchNameAR}}</strong>
+              {{ "branch" | translate }}:
+              <strong>{{
+                _translationService.isEnglish
+                  ? ticket.branchNameEN
+                  : ticket.branchNameAR
+              }}</strong>
             </p>
             <p>
-              {{'department' | translate}}: 
-              <strong>{{_translationService.isEnglish? ticket.departementNameEN: ticket.departementNameAR}}</strong>
+              {{ "department" | translate }}:
+              <strong>{{
+                _translationService.isEnglish
+                  ? ticket.departementNameEN
+                  : ticket.departementNameAR
+              }}</strong>
             </p>
             <p>
-              {{'current-ticket' | translate}}: 
-              <strong>{{ticket.currentNumber}}</strong>
+              {{ "current-ticket" | translate }}:
+              <strong>{{ ticket.currentNumber }}</strong>
             </p>
           </div>
 
           <p class="ticket__date">
-            <strong>{{ticket.createTime | date: 'shortTime'}}</strong>
-            {{ticket.createTime | date}}
+            <strong>{{ ticket.createTime | date: "shortTime" }}</strong>
+            {{ ticket.createTime | date }}
           </p>
-          
         </div>
       </ngx-slick-carousel>
     </ng-container>
 
     <ng-template #noTickets>
-      <h5>{{'there-is-no-waiting' | translate}}</h5>
-
-      <button
-        class="e-main-btn e-main-btn--withPadding e-main-btn--withIcon"
-        routerLink="generate"
-      >
-        <span class="bel-door icon-ticket-add">
-          <span class="path1"></span>
-          <span class="path2"></span>
-          <span class="path3"></span>
-          <span class="path4"></span>
-          <span class="path5"></span>
-          <span class="path6"></span>
-        </span>
-        Generate Ticket
-      </button>
+      <h5>{{ "there-is-no-waiting" | translate }}</h5>
     </ng-template>
+
+    <button
+      class="e-main-btn e-main-btn--withPadding e-main-btn--withIcon"
+      routerLink="generate"
+    >
+      <span class="bel-door icon-ticket-add">
+        <span class="path1"></span>
+        <span class="path2"></span>
+        <span class="path3"></span>
+        <span class="path4"></span>
+        <span class="path5"></span>
+        <span class="path6"></span>
+      </span>
+      Generate Ticket
+    </button>
   </div>
 </section>
