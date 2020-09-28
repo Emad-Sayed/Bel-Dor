@@ -2,6 +2,24 @@
 form {
   margin-top: 4rem;
   background-color: $main-light-color;
+
+  .e-form-group {
+    .bel-door {
+      font-size: 24px;
+      vertical-align: middle;
+    }
+
+    .icon-arrow-down {
+      font-size: 10px;
+      position: absolute;
+      right: 10px;
+      top: 27px;
+      [dir="rtl"] & {
+        right: unset;
+        left: 5px;
+      }
+    }
+  }
 }
 
 @media all and (max-width: 768px) {

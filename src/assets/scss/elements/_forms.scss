@@ -14,6 +14,30 @@
   &--eightyWidth {
     width: 80%;
   }
+  &--withIcon {
+    .e-form-label--overInput {
+      left: 55px;
+      top: 8px;
+      [dir="rtl"] & {
+        left: unset;
+        right: 55px;
+      }
+    }
+
+    .bel-door {
+      position: absolute;
+      top: 27px;
+    }
+
+    .label-icon {
+      left: 15px;
+      top: 18px;
+      [dir="rtl"] & {
+        left: unset;
+        right: 15px;
+      }
+    }
+  }
 }
 
 .e-form-control {
@@ -45,8 +69,11 @@
   &:focus, &.ng-dirty {
     ~ .e-form-label--overInput {
       color: $main-color;
+      left: 15px;
       animation: labelFocused 0.5s forwards;
       [dir="rtl"] & {
+        left: unset;
+        right: 15px;
         animation: labelFocusedRtl 0.5s forwards;
       }
     }
@@ -86,12 +113,12 @@
     box-shadow: 0 0 0px 1000px #CBEEF3 inset;
     ~ .e-form-label--overInput {
       color: $main-color;
-      transform: translate3d(0, -40px, 0);
+      // transform: translate3d(0, -40px, 0);
       [dir="ltr"] & {
-        animation: labelFocused 0.5s ease-in-out;
+        animation: labelFocused 0.5s forwards;
       }
       [dir="rtl"] & {
-        animation: labelFocusedRtl 0.5s ease-in-out;
+        animation: labelFocusedRtl 0.5s forwards;
       }
     }
   }
