@@ -9,6 +9,11 @@
   margin-top: 5px;
   background-color: $main-light-color;
 
+  @media screen and (max-width: 768px) {
+    height: auto;
+    margin-top: 20px;
+  }
+
   .ticket {
     border-radius: $border-radius;
     border: 1px solid $main-dark-color;
