@@ -49,3 +49,17 @@ trigger('flyInOut', [
     }),
   ]))),
 ]);
+
+export const notifyAnimation = 
+  trigger('notificationAnim', 
+  [
+    state('normal', style({
+      transform: 'scale(1)'
+    })),
+
+    state('updated', style({
+      transform: 'scale(2)'
+    })),
+
+    transition('normal <=> updated', animate('1000ms cubic-bezier(0.55, 0.06, 0.68, 0.19)'))
+  ]);
