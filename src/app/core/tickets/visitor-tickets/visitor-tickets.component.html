@@ -68,6 +68,15 @@
             <strong>{{ ticket.createTime | date: "shortTime" }}</strong>
             {{ ticket.createTime | date }}
           </p>
+
+          <div class="ticket__feedback" *ngIf="param.ticketType === 'closed'">
+            <button class="e-btn" (click)="showFeedbackDetails(ticket.id)">Show ticket feedback</button>
+          </div>
+
+          <div class="ticket__feedback-details" *ngIf="isFeedbackShown">
+            {{feedbackDetails['information']}}ascascasc
+          </div>
+          
         </div>
       </ngx-slick-carousel>
     </ng-container>
