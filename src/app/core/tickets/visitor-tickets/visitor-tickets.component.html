@@ -60,7 +60,7 @@
             </p>
             <p>
               {{ "current-ticket" | translate }}:
-              <strong>{{ ticket.currentNumber }}</strong>
+              <strong [@notificationAnim]="currentNumberUpdated? 'updated': 'normal'">{{ ticket.currentNumber }}</strong>
             </p>
           </div>
 
