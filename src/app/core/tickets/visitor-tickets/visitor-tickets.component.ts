@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { VisitorTicketsService } from './visitor-tickets.service';
+import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
 
 @Component({
   selector: 'app-visitor-tickets',
@@ -30,48 +31,63 @@ export class VisitorTicketsComponent implements OnInit {
   isFeedbackShown = false;
 
   constructor(
+    private realTimeCenter: RealTimeCenterService,
     private _visitorTicketsService: VisitorTicketsService,
     public _translationService: TranslationsService,
     private actRoute: ActivatedRoute
-  ) { }
+  ) {
+    this.realTimeCenter.notifier.subscribe(
+      (data: any) => {
+        let selectedTicket = this.tickets.find(t => t['branchDepartementId'] == data.branchDepartementId);
+        if(selectedTicket)
+        selectedTicket['currentNumber']=data.ticketNumber;
+      }
+    )
+  }
 
   ngOnInit(): void {
     this.spinnerPlaceholder.sendViewContainer();
 
 
     this.actRoute.queryParams
-    .subscribe(
-      param => {
-        console.log(param);
-        this.param = param;
+      .subscribe(
+        param => {
+          console.log(param);
+          this.param = param;
 
-        const requestParams = {
-          statusIds: [1],
-          pageSize: 100
-        };
-        if (param.ticketType === 'missed') {
-          requestParams['statusIds'] = [4];
-        }
-        else if (param.ticketType === 'closed') {
-          requestParams['statusIds'] = [3];
-        }
+          const requestParams = {
+            statusIds: [1],
+            pageSize: 100
+          };
+          if (param.ticketType === 'missed') {
+            requestParams['statusIds'] = [4];
+          }
+          else if (param.ticketType === 'closed') {
+            requestParams['statusIds'] = [3];
+          }
 
-        this._visitorTicketsService.getVisitorTickets(requestParams)
-        .subscribe(res => {
-          this.tickets = res['data'];
-        });
-      }
-    );
+          this._visitorTicketsService.getVisitorTickets(requestParams)
+            .subscribe(res => {
+              this.tickets = res['data'];
+              this.addMeToMyRealTimeGroups();
+            });
+        }
+      );
   }
-
+  addMeToMyRealTimeGroups() {
+    this.tickets.forEach(element => {
+      if (element.statusId == 1)
+        this.realTimeCenter.addMeToGroup("V_" + element.branchDepartementId);
+    });
+  }
   showFeedbackDetails(id: string) {
     this._visitorTicketsService.getClosedTicketInfo(id)
-    .subscribe(res => {
-      console.log(res);
-      this.feedbackDetails = res['data'];
-      this.isFeedbackShown = true;      
+      .subscribe(res => {
+        console.log(res);
+        this.feedbackDetails = res['data'];
+        this.isFeedbackShown = true;
 
-    });
+      });
   }
 
 }
