@@ -23,14 +23,16 @@ export class VisitorTicketsService {
     let params = new HttpParams();
     params = params.set('statusIds', data.statusIds);
     params = params.set('pageSize', data.pageSize);
-    const date = new Date('9/26/2020').toDateString();
-    params = params.set('specificDay', date);
+    // const date = new Date('9/26/2020').toDateString();
+    // params = params.set('specificDay', date);
 
     return this.http$.get(`${environment.baseUrl}Ticket/VisitorDailyTickets`, {params: params});
   }
 
   getClosedTicketInfo(id: string) {
-    return this.http$.get(`${environment.baseUrl}Ticket/ClosedTicketInfo${id}`);
+    let params = new HttpParams();
+    params = params.set('id', id);
+    return this.http$.get(`${environment.baseUrl}Ticket/ClosedTicketInfo`, {params: params});
   }
 
 }

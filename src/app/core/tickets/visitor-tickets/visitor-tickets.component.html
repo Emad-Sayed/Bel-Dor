@@ -71,10 +71,10 @@
 
           <div class="ticket__feedback" *ngIf="param.ticketType === 'closed'">
             <button class="e-btn" (click)="showFeedbackDetails(ticket.id)">Show ticket feedback</button>
+          </div>
 
-            <div class="ticket__feedback-details" *ngIf="isFeedbackShown">
-              {{feedbackDetails['information']}}
-            </div>
+          <div class="ticket__feedback-details" *ngIf="isFeedbackShown">
+            {{feedbackDetails['information']}}ascascasc
           </div>
           
         </div>
