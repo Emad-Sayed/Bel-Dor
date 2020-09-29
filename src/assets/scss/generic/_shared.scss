@@ -54,14 +54,20 @@ mark {
   .slick-slide {outline: none;}
   .slick-prev, .slick-next {
     z-index: 5;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: $box-shadow;
   }
   .slick-prev::before, .slick-next::before {
     color: $main-color;
-    opacity: 0.5;
     font-family: 'bel-door' !important;
-    padding: 4px 8px;
+    padding: 5px 8px;
     border: 1px solid;
     border-radius: 50%;
+    font-size: 14px;
   }
   .slick-prev::before{
     content: "\e90f";
@@ -69,21 +75,14 @@ mark {
   .slick-next::before {
     content: "\e910";
   }
-  .slick-prev:hover::before, .slick-next:hover::before {
-    color: $main-color;
-    opacity: 1;
-  }
   .slick-disabled {
     display: none !important;
   }
   .slick-slide {
-    margin: 0 10px;
+    margin: 0 15px;
   }
   .slick-track {
     display: flex;
-  }
-  .slick-list {
-    overflow: visible;
   }
 }
 
