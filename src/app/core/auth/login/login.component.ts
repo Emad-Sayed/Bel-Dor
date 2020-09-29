@@ -74,9 +74,14 @@ export class LoginComponent implements OnInit {
       this._authService.loginUser(this.loginForm.value)
       .subscribe(
         res => {
-          this._userService.setUser(res['token']);
-
-          this.router.navigateByUrl('/tickets');
+          this._userService.setUser(res['token'], res['roles'][0]);
+          
+          const role = localStorage.getItem('role');
+          if (role==='EMPLOYEE') {
+            this.router.navigateByUrl('/queue');
+          } else {
+            this.router.navigateByUrl('/tickets');
+          }
         }
       );
     }

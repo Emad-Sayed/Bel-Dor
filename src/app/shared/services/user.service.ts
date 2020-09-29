@@ -16,10 +16,11 @@ export class UserService {
     this.updateUser();
   }
 
-  public setUser(userToken: string) {
+  public setUser(userToken: string, role: string) {
     localStorage.setItem('token', userToken);
     const userData = this.jwtHelper.decodeToken(userToken);
     localStorage.setItem('userCode', userData.Id);
+    localStorage.setItem('role', role);
     this.updateUser();
   }
 
