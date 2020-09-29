@@ -48,11 +48,9 @@ export class VisitorTicketsComponent implements OnInit {
         if (selectedTicket) {
           selectedTicket['currentNumber'] = data.ticketNumber;
           this.currentNumberUpdated = true;
+
+          setTimeout(() => { this.currentNumberUpdated = false }, 1000);
         }
-      },
-      null,
-      () => {
-        this.currentNumberUpdated = false;
       }
     )
   }
