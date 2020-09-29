@@ -82,6 +82,9 @@ mark {
   .slick-track {
     display: flex;
   }
+  .slick-list {
+    overflow: visible;
+  }
 }
 
 app-spinner {

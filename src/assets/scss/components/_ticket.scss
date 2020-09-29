@@ -52,6 +52,25 @@
       }
     }
 
+    &__feedback {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+
+      .e-btn {
+        @include resetBtn;
+        width: 200px;
+        height: 30px;
+        border: 1px solid $main-dark-color;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        background-color: transparent;
+      }
+    }
+
     @media all and (max-width: 768px) {
       flex-direction: column;
       align-items: center;
