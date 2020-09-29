@@ -4,6 +4,7 @@ import { NavLink } from './models/nav-link';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
 
 @Component({
   selector: 'app-header',
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
   ];
 
   constructor(
+    private realTimeCenter:RealTimeCenterService,
     public _transService: TranslationsService,
     public _userService: UserService,
     private router: Router) { }
