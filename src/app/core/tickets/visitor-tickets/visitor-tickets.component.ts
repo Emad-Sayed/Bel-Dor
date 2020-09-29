@@ -4,11 +4,15 @@ import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/sp
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { VisitorTicketsService } from './visitor-tickets.service';
 import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
+import { notifyAnimation } from "../../../shared/animations/animations";
 
 @Component({
   selector: 'app-visitor-tickets',
   templateUrl: './visitor-tickets.component.html',
-  styleUrls: ['./visitor-tickets.component.scss']
+  styleUrls: ['./visitor-tickets.component.scss'],
+  animations: [
+    notifyAnimation
+  ]
 })
 export class VisitorTicketsComponent implements OnInit {
   @ViewChild(SpinnerDirective, { static: true, read: SpinnerDirective }) spinnerPlaceholder: SpinnerDirective;
@@ -30,6 +34,8 @@ export class VisitorTicketsComponent implements OnInit {
   feedbackDetails = {};
   isFeedbackShown = false;
 
+  currentNumberUpdated = false;
+
   constructor(
     private realTimeCenter: RealTimeCenterService,
     private _visitorTicketsService: VisitorTicketsService,
@@ -39,8 +45,14 @@ export class VisitorTicketsComponent implements OnInit {
     this.realTimeCenter.notifier.subscribe(
       (data: any) => {
         let selectedTicket = this.tickets.find(t => t['branchDepartementId'] == data.branchDepartementId);
-        if(selectedTicket)
-        selectedTicket['currentNumber']=data.ticketNumber;
+        if (selectedTicket) {
+          selectedTicket['currentNumber'] = data.ticketNumber;
+          this.currentNumberUpdated = true;
+        }
+      },
+      null,
+      () => {
+        this.currentNumberUpdated = false;
       }
     )
   }
