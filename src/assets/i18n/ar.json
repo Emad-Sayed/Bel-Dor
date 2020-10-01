@@ -42,5 +42,6 @@
 	"queue": "الصف",
 	"success": "نجاح",
 	"error-occurred": "حدث خطأ",
-	"client-code": "كود العميل"
+	"client-code": "كود العميل",
+	"there-is-no-queue": "لا يوجد تذاكر في الصف"
 }

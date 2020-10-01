@@ -42,5 +42,6 @@
 	"queue": "Queue",
 	"success": "Success",
 	"error-occurred": "An error occurred!",
-	"client-code": "Client code"
+	"client-code": "Client code",
+	"there-is-no-queue": "There is no waiting tickets"
 }
