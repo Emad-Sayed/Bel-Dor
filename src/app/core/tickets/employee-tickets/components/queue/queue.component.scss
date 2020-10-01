@@ -1,0 +1,57 @@
+@import "../../../../../../assets/scss/tools/mixins";
+@import "../../../../../../assets/scss/settings/variables";
+
+h5 {
+  margin: auto;
+}
+
+.tickets {
+  align-items: center;
+
+  height: 300px;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.ticket {
+  line-height: 26px;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 10px;
+  width: 240px;
+  opacity: 0.3;
+  transform: translateY(60px);
+  h3 {
+    font-size: 5rem;
+  }
+  
+  &:nth-of-type(2) {
+    width: 220px;
+  }
+  &:nth-of-type(3) {
+    width: 200px;
+  }
+
+  &:nth-of-type(1) {
+    @include transition(all);
+    
+    &.ticket--activated {
+      opacity: 1;
+      width: 240px;
+      transform: translateY(0);
+    }
+  }
+}
+
+.e-main-btn {
+  display: block;
+  margin: auto;
+  margin-top: 3rem;
+
+  &--action {
+    background-color: $shade-dark-color;
+    color: $main-color;
+    border: 2px solid;
+  }
+}
