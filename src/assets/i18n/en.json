@@ -36,5 +36,11 @@
 	"closed-tickets": "Closed tickets",
 	"there-is-no-waiting": "There is no waiting tickets",
 	"there-is-no-missed": "There is no missed tickets",
-	"there-is-no-closed": "There is no closed tickets"
+	"there-is-no-closed": "There is no closed tickets",
+	"next-queue": "Next in queue",
+	"close-ticket": "Close ticket",
+	"queue": "Queue",
+	"success": "Success",
+	"error-occurred": "An error occurred!",
+	"client-code": "Client code"
 }
