@@ -8,6 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class UserService {
 
   isLogged$ = new BehaviorSubject(false);
+  role = localStorage.getItem('role');
 
   constructor(private jwtHelper: JwtHelperService) {
     if (this.jwtHelper.isTokenExpired(localStorage.getItem('token'))) {
