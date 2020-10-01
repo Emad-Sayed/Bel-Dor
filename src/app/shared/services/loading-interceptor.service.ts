@@ -42,6 +42,12 @@ export class LoadingInterceptor implements HttpInterceptor {
     const subject = this.injector.get(SpinnerService);
     subject.spinnerViewContainerSubject.subscribe((ref) => {
       this.spinnerRef = ref;
+
+      const parentEl = this.spinnerRef.element.nativeElement.parentElement;
+      if (parentEl instanceof HTMLButtonElement) {
+        parentEl.disabled = true;
+      }
+
       this.spinnerRef.clear();
     });
 
@@ -62,8 +68,10 @@ export class LoadingInterceptor implements HttpInterceptor {
       tap((req) => {
         if (req instanceof HttpResponseBase) {
           this.requestCounter--;
-          if (this.requestCounter == 0 && this.spinnerRef)
+          if (this.requestCounter == 0 && this.spinnerRef) {
             this.spinnerRef.clear();
+            this.spinnerRef.element.nativeElement.parentElement.disabled = false;
+          }
         }
       })
     );
