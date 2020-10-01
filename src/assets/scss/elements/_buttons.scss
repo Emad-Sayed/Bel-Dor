@@ -37,6 +37,10 @@
     box-shadow:  0 10px 40px rgba($color: $main-color, $alpha: 0.1); 
   }
 
+  &--noHover:hover {
+    transform: none !important;
+  }
+
   &:disabled {
     opacity: 0.8;
     cursor: not-allowed;
