@@ -209,6 +209,9 @@ input[type="file"] {
   position: absolute;
   bottom: 0;
   font-size: 1.4rem;
+  [dir="rtl"] & {
+    bottom: 5px;
+  }
 }
 
 .e-valid-input {
