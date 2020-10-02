@@ -43,5 +43,11 @@
 	"success": "Success",
 	"error-occurred": "An error occurred!",
 	"client-code": "Client code",
-	"there-is-no-queue": "There is no waiting tickets"
+	"there-is-no-queue": "There is no waiting tickets",
+	"username-required": "Username is required!",
+	"username-validation": "Username should be 6 - 25 characters!",
+	"email-required": "Email is required!",
+	"email-validation": "Email should be a valid email address!",
+	"password-required": "Password is required!",
+	"password-validation": "Password should be more than 6 characters!"
 }

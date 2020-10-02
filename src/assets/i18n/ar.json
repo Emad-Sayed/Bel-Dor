@@ -43,5 +43,11 @@
 	"success": "نجاح",
 	"error-occurred": "حدث خطأ",
 	"client-code": "كود العميل",
-	"there-is-no-queue": "لا يوجد تذاكر في الصف"
+	"there-is-no-queue": "لا يوجد تذاكر في الصف",
+	"username-required": "اسم المستخدم مطلوب!",
+	"username-validation": "اسم المستخدم يجب ان يكون من 6-10 احرف!",
+	"email-required": "البريد الاليكتروني مطلوب!",
+	"email-validation": "البريد الاليكتروني يجب ان يكون صحيح!",
+	"password-required": "كلمه المرور مطلوبه!",
+	"password-validation": "كلمه المرور يجب ان تكون اكتر من 6 احرف!"
 }
