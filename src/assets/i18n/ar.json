@@ -50,5 +50,6 @@
 	"email-validation": "البريد الاليكتروني يجب ان يكون صحيح!",
 	"password-required": "كلمه المرور مطلوبه!",
 	"password-validation": "كلمه المرور يجب ان تكون اكتر من 6 احرف!",
-	"client-name": "أسم العميل"
+	"client-name": "أسم العميل",
+	"total-tickets": "اجمالي التذاكر"
 }

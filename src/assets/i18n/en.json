@@ -50,5 +50,6 @@
 	"email-validation": "Email should be a valid email address!",
 	"password-required": "Password is required!",
 	"password-validation": "Password should be more than 6 characters!",
-	"client-name": "Client name"
+	"client-name": "Client name",
+	"total-tickets": "Total tickets"
 }
