@@ -41,12 +41,11 @@ export class QueueComponent implements OnInit {
     });
   }
 
-  updateQueue(data: {statusIds: any, pageSize: any}) {
+  updateQueue(data = {statusIds: [1], pageSize: 100}) {
     this._employeeService.getEmployeeDailyTickets(data)
-      .subscribe(res => {
-        console.log(res);
-        this.ticketQueue = res['data'];
-      });
+    .subscribe(res => {
+      this.ticketQueue = res['data'];
+    });
   }
 
   nextInQueue() {
@@ -60,9 +59,7 @@ export class QueueComponent implements OnInit {
     this.queueActivated = false;
 
     this._employeeService.closeServedTicket()
-    .subscribe(() => {
-      this.updateQueue({statusIds: [1], pageSize: 100})
-    });
+    .subscribe({complete: this.updateQueue.bind(this)});
   }
 
 }
