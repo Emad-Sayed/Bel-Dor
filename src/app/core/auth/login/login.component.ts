@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(
       '', 
-      [Validators.required, Validators.minLength(6), Validators.maxLength(25)]
+      [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]
       ),
     password: new FormControl(
       '', 
@@ -35,17 +35,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get usernameErrors() {
+  get emailErrors() {
     const errors = this.getFormError('username');
     
     if (!errors) {
       return false;
     }
     if (errors['required']) {
-      return 'username-required'
+      return 'email-required'
     } 
     else if (errors['maxlength'] || errors['minlength']) {
-      return 'username-validation'
+      return 'email-validation'
     }
   }
 

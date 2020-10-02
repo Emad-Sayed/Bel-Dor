@@ -8,20 +8,20 @@
     <fieldset class="e-form-group e-form-group--eightyWidth" 
     [ngClass]="{'e-valid-input': loginForm.controls.username.valid}">
       <input 
-      id="username"
-      autocomplete="username"
+      id="email"
+      autocomplete="email"
       autofocus
       tabindex="1"
       type="text" 
       class="e-form-control"
       formControlName="username">
-      <label for="username" class="e-form-label e-form-label--overInput">
-        {{'username' | translate}} 
+      <label for="email" class="e-form-label e-form-label--overInput">
+        {{'email' | translate}} 
         <small>({{'required' | translate}})</small>
       </label>
 
-      <p class="e-form-error" *ngIf="loginForm.controls.username.touched && usernameErrors">
-        {{usernameErrors | translate}}
+      <p class="e-form-error" *ngIf="loginForm.controls.username.touched && emailErrors">
+        {{emailErrors | translate}}
       </p>
     </fieldset>
 
