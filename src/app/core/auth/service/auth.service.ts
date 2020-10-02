@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { Credentials } from '../models/credentials';
 
 @Injectable()
 export class AuthService {
 
   constructor(private http$: HttpClient) { }
 
-  loginUser(credential: {username: string, password: string, rememberMe: boolean}) {
+  loginUser(credential: Credentials) {
     return this.http$.post(`${environment.baseUrl}Auth`, credential);
   }
 
-  registerUser(credential: {username: string, email: string, password: string}) {
-    return this.http$.post(`${environment.baseUrl}Auth`, credential);
+  registerUser(credential: Credentials) {
+    return this.http$.post(`${environment.baseUrl}User/CreateVisistor`, credential);
   }
 }
