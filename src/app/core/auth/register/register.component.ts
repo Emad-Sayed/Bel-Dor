@@ -35,10 +35,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Username is required!'
+      return 'username-required'
     } 
     else if (errors['maxlength'] || errors['minlength']) {
-      return 'Username should be 6 - 25 characters!'
+      return 'username-validation'
     }
   }
 
@@ -49,7 +49,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Email is required!'
+      return 'email-required'
+    }
+    if (errors['pattern']) {
+      return 'email-validation'
     }
   }
 
@@ -60,10 +63,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Password is required!'
+      return 'password-required'
     }
     else if (errors['minlength']) {
-      return 'Password should be more than 6 characters!'
+      return 'password-validation'
     }
   }
 
