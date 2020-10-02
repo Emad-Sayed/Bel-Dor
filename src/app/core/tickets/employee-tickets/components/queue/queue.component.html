@@ -3,7 +3,7 @@
     <button class="o-tabs__tab" 
     [routerLink]="['/queue']"
     [ngClass]="{'o-tabs__tab--active': !param.queueType}">
-      {{ "queue" | translate }}
+      {{ "queue" | translate }} <strong class="total"> ( {{ticketQueue.length}} )</strong>
     </button>
 
     <button
