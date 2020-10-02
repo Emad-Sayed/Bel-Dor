@@ -48,7 +48,7 @@
       </label>
     </fieldset>
   </form>
-  <nav class="o-nav" *ngIf="_userService.role === 'VISITOR'">
+  <nav class="o-nav" *ngIf="_userService.role !== 'EMPLOYEE'">
     <a
       class="o-nav__link e-link"
       [routerLink]="[link.router]"
