@@ -30,31 +30,9 @@
               {{ 'client-code' | translate }}:
               <strong>{{ ticket.visitorId }}</strong>
             </p>
-          </div>
-          
-        </div>
-        <div class="ticket" *ngFor="let ticket of ticketQueue">
-          <h3 class="ticket__graphic">
-            {{ticket['ticketNumber']}}
-          </h3>
-
-          <div class="ticket__info">
             <p>
-              {{ 'client-code' | translate }}:
-              <strong>{{ ticket.visitorId }}</strong>
-            </p>
-          </div>
-          
-        </div>
-        <div class="ticket" *ngFor="let ticket of ticketQueue">
-          <h3 class="ticket__graphic">
-            {{ticket['ticketNumber']}}
-          </h3>
-
-          <div class="ticket__info">
-            <p>
-              {{ 'client-code' | translate }}:
-              <strong>{{ ticket.visitorId }}</strong>
+              {{ 'client-name' | translate }}:
+              <strong>{{ ticket.visitorName }}</strong>
             </p>
           </div>
           
@@ -71,6 +49,7 @@
   <button
     class="e-main-btn e-main-btn--noHover"
     (click)="nextInQueue()"
+    [disabled]="!ticketQueue.length"
   >
     {{'next-queue' | translate}}
   </button>
