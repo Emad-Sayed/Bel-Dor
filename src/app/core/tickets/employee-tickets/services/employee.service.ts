@@ -9,11 +9,7 @@ export class EmployeeService {
   constructor(private http$: HttpClient) { }
 
   getEmployeeDailyTickets(data) {
-    let params = new HttpParams();
-    params = params.set('statusIds', data.statusIds);
-    params = params.set('pageSize', data.pageSize);
-    
-    return this.http$.get(`${environment.baseUrl}Ticket/EmployeeDailyTickets`, {params: params});
+    return this.http$.get(`${environment.baseUrl}Ticket/EmployeeDailyTickets`, {params: data});
   }
   
   serveTicket() {
@@ -21,5 +17,13 @@ export class EmployeeService {
   }
   closeServedTicket() {
     return this.http$.post(`${environment.baseUrl}Ticket/CloseServedTicket`, null);
+  }
+  setTicketAsMissed() {
+    return this.http$.post(`${environment.baseUrl}Ticket/SetTicketAsMissed`, null);
+  }
+  serveMissedTicket(id: string) {
+    let params = new HttpParams();
+    params = params.append('ticketId', id);
+    return this.http$.post(`${environment.baseUrl}Ticket/ServeMissedTicket`, null);
   }
 }
