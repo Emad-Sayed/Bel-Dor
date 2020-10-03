@@ -21,6 +21,22 @@
   <div class="tickets">
     <ng-template appSpinnerPlaceholder></ng-template>
 
+    <form 
+    *ngIf="param.queueType === 'missed'" 
+    class="e-form" 
+    [formGroup]="ticketSearch">
+      <fieldset class="e-form-group">
+        <input 
+        id="ticketSearch"
+        type="number" 
+        class="e-form-control"
+        formControlName="ticketNumber">
+        <label for="ticketSearch" class="e-form-label e-form-label--overInput">
+          {{'search-by-ticket' | translate}}
+        </label>
+      </fieldset>
+    </form>
+
     <ng-container *ngIf="ticketQueue.length; else noTickets">
       <div
         class="ticket"
@@ -54,27 +70,41 @@
     </ng-template>
   </div>
 </section>
-<div class="action-buttons">
-  <ng-container *ngIf="!queueActivated; else closeTicket">
+<ng-container  *ngIf="param.queueType !== 'missed'; else missedBtn">
+  <div class="action-buttons">
+    <ng-container *ngIf="!queueActivated; else closeTicket">
+      <button
+        class="e-main-btn e-main-btn--noHover"
+        (click)="nextInQueue()"
+        [disabled]="!ticketQueue.length"
+      >
+        {{ "next-queue" | translate }}
+      </button>
+    </ng-container>
+  
+    <ng-template #closeTicket>
+      <button
+        class="e-btn e-main-btn e-main-btn--noHover e-main-btn--action"
+        (click)="removeFromQueue()"
+      >
+        {{ "close-ticket" | translate }}
+      </button>
+  
+      <button (click)="setAsMissed()" class="e-btn e-secondary-btn">
+        {{ "set-missed" | translate }}
+      </button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #missedBtn>
+  <div class="action-buttons">
     <button
       class="e-main-btn e-main-btn--noHover"
-      (click)="nextInQueue()"
-      [disabled]="!ticketQueue.length"
+      (click)="serveMissedTicket(ticketQueue[0].id)"
+      [hidden]="!ticketQueue.length"
     >
-      {{ "next-queue" | translate }}
+      {{ "serve-missed" | translate }}
     </button>
-  </ng-container>
-
-  <ng-template #closeTicket>
-    <button
-      class="e-btn e-main-btn e-main-btn--noHover e-main-btn--action"
-      (click)="removeFromQueue()"
-    >
-      {{ "close-ticket" | translate }}
-    </button>
-
-    <button (click)="setAsMissed()" class="e-btn e-secondary-btn">
-      {{ "set-missed" | translate }}
-    </button>
-  </ng-template>
-</div>
+  </div>
+</ng-template>

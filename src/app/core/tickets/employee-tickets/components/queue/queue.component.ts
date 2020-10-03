@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { asyncScheduler } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { EmployeeService } from '../../services/employee.service';
@@ -19,10 +22,13 @@ export class QueueComponent implements OnInit {
 
   queueActivated = false;
 
+  ticketSearch: FormGroup;
+
   constructor(
     private actRoute: ActivatedRoute,
     public _translationService: TranslationsService,
-    private _employeeService: EmployeeService
+    private _employeeService: EmployeeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,14 +40,30 @@ export class QueueComponent implements OnInit {
         statusIds: [1, 2]
       }
       if (this.param.queueType === 'missed') {
-        data['statusIds'] = [4];
+        this.ticketQueue = [];
+
+        this.ticketSearch = new FormGroup({
+          ticketNumber: new FormControl('', Validators.required)
+        });
+
+        this.ticketSearch.get('ticketNumber').valueChanges
+        .pipe(debounceTime(1000, asyncScheduler))
+        .subscribe(val => {
+          console.log(val);
+          if (val) {
+            data['statusIds'] = [4];
+            data['ticketNumbers'] = [val];
+            this.updateQueue(data);
+          }
+        });
+        return;
       }
 
       this.updateQueue(data);
     });
   }
 
-  updateQueue(data = {statusIds: [1], pageSize: 100}) {
+  updateQueue(data = {statusIds: [1]}) {
     this._employeeService.getEmployeeDailyTickets(data)
     .subscribe(res => {
       this.ticketQueue = res['data'];
@@ -67,6 +89,20 @@ export class QueueComponent implements OnInit {
 
     this._employeeService.closeServedTicket()
     .subscribe({complete: this.updateQueue.bind(this)});
+  }
+
+  setAsMissed() {
+    this.queueActivated = false;
+
+    this._employeeService.setTicketAsMissed()
+    .subscribe({complete: this.updateQueue.bind(this)});
+  }
+
+  serveMissedTicket(id: string) {
+    this._employeeService.serveMissedTicket(id)
+    .subscribe(() => {
+      this.router.navigateByUrl('/queue');
+    });
   }
 
 }

@@ -22,8 +22,6 @@ export class EmployeeService {
     return this.http$.post(`${environment.baseUrl}Ticket/SetTicketAsMissed`, null);
   }
   serveMissedTicket(id: string) {
-    let params = new HttpParams();
-    params = params.append('ticketId', id);
-    return this.http$.post(`${environment.baseUrl}Ticket/ServeMissedTicket`, null);
+    return this.http$.post(`${environment.baseUrl}Ticket/ServeMissedTicket?ticketId=${id}`, null);
   }
 }
