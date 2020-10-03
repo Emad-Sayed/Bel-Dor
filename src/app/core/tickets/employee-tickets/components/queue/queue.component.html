@@ -1,14 +1,16 @@
 <section class="o-card o-section-content">
   <div class="o-tabs">
-    <button class="o-tabs__tab" 
-    [routerLink]="['/queue']"
-    [ngClass]="{'o-tabs__tab--active': !param.queueType}">
+    <button
+      class="o-tabs__tab"
+      [routerLink]="['/queue']"
+      [ngClass]="{ 'o-tabs__tab--active': !param.queueType }"
+    >
       {{ "queue" | translate }}
     </button>
 
     <button
       class="o-tabs__tab"
-      [ngClass]="{'o-tabs__tab--active':param.queueType === 'missed'}"
+      [ngClass]="{ 'o-tabs__tab--active': param.queueType === 'missed' }"
       [routerLink]="['/queue']"
       [queryParams]="{ queueType: 'missed' }"
     >
@@ -20,28 +22,31 @@
     <ng-template appSpinnerPlaceholder></ng-template>
 
     <ng-container *ngIf="ticketQueue.length; else noTickets">
-        <div class="ticket" [ngClass]="{'ticket--activated': queueActivated}" *ngFor="let ticket of ticketQueue">
-          <h3 class="ticket__graphic">
-            {{ticket['ticketNumber']}}
-          </h3>
+      <div
+        class="ticket"
+        [ngClass]="{ 'ticket--activated': queueActivated }"
+        *ngFor="let ticket of ticketQueue"
+      >
+        <h3 class="ticket__graphic">
+          {{ ticket["ticketNumber"] }}
+        </h3>
 
-          <div class="ticket__info">
-            <p>
-              {{ 'client-code' | translate }}:
-              <strong>{{ ticket.visitorId }}</strong>
-            </p>
-            <p>
-              {{ 'client-name' | translate }}:
-              <strong>{{ ticket.visitorName }}</strong>
-            </p>
-          </div>
-          
+        <div class="ticket__info">
+          <p>
+            {{ "client-code" | translate }}:
+            <strong>{{ ticket.visitorId }}</strong>
+          </p>
+          <p>
+            {{ "client-name" | translate }}:
+            <strong>{{ ticket.visitorName }}</strong>
+          </p>
         </div>
+      </div>
 
-        <div class="tickets__total">
-          {{'total-tickets' | translate}}
-          <strong class="total"> ( {{ticketQueue.length}} )</strong>
-        </div>
+      <div class="tickets__total">
+        {{ "total-tickets" | translate }}
+        <strong class="total"> ( {{ pagesTotalRows }} )</strong>
+      </div>
     </ng-container>
 
     <ng-template #noTickets>
@@ -49,22 +54,27 @@
     </ng-template>
   </div>
 </section>
+<div class="action-buttons">
+  <ng-container *ngIf="!queueActivated; else closeTicket">
+    <button
+      class="e-main-btn e-main-btn--noHover"
+      (click)="nextInQueue()"
+      [disabled]="!ticketQueue.length"
+    >
+      {{ "next-queue" | translate }}
+    </button>
+  </ng-container>
 
-<ng-container *ngIf="!queueActivated; else closeTicket">
-  <button
-    class="e-main-btn e-main-btn--noHover"
-    (click)="nextInQueue()"
-    [disabled]="!ticketQueue.length"
-  >
-    {{'next-queue' | translate}}
-  </button>
-</ng-container>
+  <ng-template #closeTicket>
+    <button
+      class="e-btn e-main-btn e-main-btn--noHover e-main-btn--action"
+      (click)="removeFromQueue()"
+    >
+      {{ "close-ticket" | translate }}
+    </button>
 
-<ng-template #closeTicket>
-  <button
-    class="e-main-btn e-main-btn--noHover e-main-btn--action"
-    (click)="removeFromQueue()"
-  >
-    {{'close-ticket' | translate}}
-  </button>
-</ng-template>
+    <button (click)="setAsMissed()" class="e-btn e-secondary-btn">
+      {{ "set-missed" | translate }}
+    </button>
+  </ng-template>
+</div>
