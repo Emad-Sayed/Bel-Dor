@@ -51,5 +51,8 @@
 	"password-required": "Password is required!",
 	"password-validation": "Password should be more than 6 characters!",
 	"client-name": "Client name",
-	"total-tickets": "Total tickets"
+	"total-tickets": "Total tickets",
+	"set-missed": "Set missed",
+	"search-by-ticket": "Search by ticket number",
+	"serve-missed": "Serve missed ticket"
 }

@@ -51,5 +51,8 @@
 	"password-required": "كلمه المرور مطلوبه!",
 	"password-validation": "كلمه المرور يجب ان تكون اكتر من 6 احرف!",
 	"client-name": "أسم العميل",
-	"total-tickets": "اجمالي التذاكر"
+	"total-tickets": "اجمالي التذاكر",
+	"set-missed": "فاقد",
+	"search-by-ticket": "ابحث برقم التذكره",
+	"serve-missed": "اخدم التذكره"
 }
