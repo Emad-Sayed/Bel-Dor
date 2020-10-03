@@ -13,6 +13,7 @@ export class QueueComponent implements OnInit {
   @ViewChild(SpinnerDirective, {static: true, read: SpinnerDirective}) spinnerPlaceholder: SpinnerDirective;
 
   ticketQueue = [];
+  pagesTotalRows: number;
 
   param: Params;
 
@@ -30,8 +31,7 @@ export class QueueComponent implements OnInit {
       this.spinnerPlaceholder.sendViewContainer();
       this.param = param;
       const data = {
-        statusIds: [1],
-        pageSize: 100
+        statusIds: [1, 2]
       }
       if (this.param.queueType === 'missed') {
         data['statusIds'] = [4];
@@ -45,6 +45,13 @@ export class QueueComponent implements OnInit {
     this._employeeService.getEmployeeDailyTickets(data)
     .subscribe(res => {
       this.ticketQueue = res['data'];
+      this.pagesTotalRows = res['pagesTotalRows'];
+      const servingTicketId = this.ticketQueue.findIndex(ticket => ticket.statusId === 2);
+
+      if (servingTicketId !== -1) {
+        this.queueActivated = true;
+        this.ticketQueue.splice(0, 0, this.ticketQueue.splice(servingTicketId, 1)[0]);
+      }
     });
   }
 
