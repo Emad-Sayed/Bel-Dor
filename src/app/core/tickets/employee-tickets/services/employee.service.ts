@@ -15,6 +15,9 @@ export class EmployeeService {
   serveTicket() {
     return this.http$.post(`${environment.baseUrl}Ticket/ServeTicket`, null);
   }
+  getServingTicket() {
+    return this.http$.get(`${environment.baseUrl}Ticket/EmployeeCurrentServingTicket`);
+  }
   closeServedTicket() {
     return this.http$.post(`${environment.baseUrl}Ticket/CloseServedTicket`, null);
   }

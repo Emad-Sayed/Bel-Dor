@@ -17,6 +17,7 @@ export class QueueComponent implements OnInit {
 
   ticketQueue = [];
   pagesTotalRows: number;
+  servingTicket: any;
 
   param: Params;
 
@@ -37,7 +38,7 @@ export class QueueComponent implements OnInit {
       this.spinnerPlaceholder.sendViewContainer();
       this.param = param;
       const data = {
-        statusIds: [1, 2]
+        statusIds: [1]
       }
       if (this.param.queueType === 'missed') {
         this.ticketQueue = [];
@@ -47,7 +48,7 @@ export class QueueComponent implements OnInit {
         });
 
         this.ticketSearch.get('ticketNumber').valueChanges
-        .pipe(debounceTime(1000, asyncScheduler))
+        .pipe(debounceTime(700, asyncScheduler))
         .subscribe(val => {
           console.log(val);
           if (val) {
@@ -64,16 +65,34 @@ export class QueueComponent implements OnInit {
   }
 
   updateQueue(data = {statusIds: [1]}) {
-    this._employeeService.getEmployeeDailyTickets(data)
-    .subscribe(res => {
-      this.ticketQueue = res['data'];
-      this.pagesTotalRows = res['pagesTotalRows'];
-      const servingTicketId = this.ticketQueue.findIndex(ticket => ticket.statusId === 2);
+    /** 
+     * check if there is a serving ticket @if exist
+     *  make queue activated and insert serving ticket in the first 
+     * */ 
 
-      if (servingTicketId !== -1) {
-        this.queueActivated = true;
-        this.ticketQueue.splice(0, 0, this.ticketQueue.splice(servingTicketId, 1)[0]);
-      }
+    const servingTicket = async () => {
+      this._employeeService.getServingTicket()
+      .subscribe(res => {
+        if (res['data']) {
+          this.queueActivated = true;
+          this.servingTicket = res['data'][0];
+        }
+      });
+      await this.servingTicket;
+    }
+    
+    servingTicket().then(() => {
+      this._employeeService.getEmployeeDailyTickets(data)
+      .subscribe(res => {
+        this.pagesTotalRows = res['pagesTotalRows'];
+  
+        if (this.servingTicket) {
+          this.ticketQueue = [this.servingTicket, ...res['data']];
+          this.pagesTotalRows += 1;
+          return;
+        }
+        this.ticketQueue = res['data'];
+      });
     });
   }
 
