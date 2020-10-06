@@ -35,7 +35,6 @@ export class RealTimeCenterService {
     })
   }
   addMeToGroup(groupName) {
-    debugger
     if(this.isConnected)
     this.hubConnection.invoke("CreateNotificationGroup", groupName);
   }

@@ -1,0 +1,110 @@
+<section class="o-card o-section-content">
+  <div class="o-tabs">
+    <button
+      class="o-tabs__tab"
+      [routerLink]="['/queue']"
+      [ngClass]="{ 'o-tabs__tab--active': !param.queueType }"
+    >
+      {{ "queue" | translate }}
+    </button>
+
+    <button
+      class="o-tabs__tab"
+      [ngClass]="{ 'o-tabs__tab--active': param.queueType === 'missed' }"
+      [routerLink]="['/queue']"
+      [queryParams]="{ queueType: 'missed' }"
+    >
+      {{ "missed" | translate }}
+    </button>
+  </div>
+
+  <div class="tickets">
+    <ng-template appSpinnerPlaceholder></ng-template>
+
+    <form 
+    *ngIf="param.queueType === 'missed'" 
+    class="e-form" 
+    [formGroup]="ticketSearch">
+      <fieldset class="e-form-group">
+        <input 
+        id="ticketSearch"
+        type="number" 
+        class="e-form-control"
+        formControlName="ticketNumber">
+        <label for="ticketSearch" class="e-form-label e-form-label--overInput">
+          {{'search-by-ticket' | translate}}
+        </label>
+      </fieldset>
+    </form>
+
+    <ng-container *ngIf="ticketQueue.length; else noTickets">
+      <div
+        class="ticket"
+        [ngClass]="{ 'ticket--activated': queueActivated }"
+        *ngFor="let ticket of ticketQueue"
+      >
+        <h3 class="ticket__graphic">
+          {{ ticket["ticketNumber"] }}
+        </h3>
+
+        <div class="ticket__info">
+          <p>
+            {{ "client-code" | translate }}:
+            <strong>{{ ticket.visitorId }}</strong>
+          </p>
+          <p>
+            {{ "client-name" | translate }}:
+            <strong>{{ ticket.visitorName }}</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="tickets__total">
+        {{ "total-tickets" | translate }}
+        <strong class="total"> ( {{ pagesTotalRows }} )</strong>
+      </div>
+    </ng-container>
+
+    <ng-template #noTickets>
+      <h5>{{ "there-is-no-queue" | translate }}</h5>
+    </ng-template>
+  </div>
+</section>
+<ng-container  *ngIf="param.queueType !== 'missed'; else missedBtn">
+  <div class="action-buttons">
+    <ng-container *ngIf="!queueActivated; else closeTicket">
+      <button
+        class="e-main-btn e-main-btn--noHover"
+        (click)="nextInQueue()"
+        [disabled]="!ticketQueue.length"
+      >
+        {{ "next-queue" | translate }}
+      </button>
+    </ng-container>
+  
+    <ng-template #closeTicket>
+      <button
+        class="e-btn e-main-btn e-main-btn--noHover e-main-btn--action"
+        (click)="removeFromQueue()"
+      >
+        {{ "close-ticket" | translate }}
+      </button>
+  
+      <button (click)="setAsMissed()" class="e-btn e-secondary-btn">
+        {{ "set-missed" | translate }}
+      </button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #missedBtn>
+  <div class="action-buttons">
+    <button
+      class="e-main-btn e-main-btn--noHover"
+      (click)="serveMissedTicket(ticketQueue[0].id)"
+      [hidden]="!ticketQueue.length"
+    >
+      {{ "serve-missed" | translate }}
+    </button>
+  </div>
+</ng-template>

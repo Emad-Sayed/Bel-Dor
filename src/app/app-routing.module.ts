@@ -40,9 +40,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
-    path: 'serve-tickets', 
+    path: 'queue', 
     loadChildren: () => 
-      import('./core/tickets/employee-tickets/employee-tickets.module').then(m => m.EmployeeTicketsModule),
+      import('./core/tickets/employee-tickets/modules/employee-tickets.module').then(m => m.EmployeeTicketsModule),
     canActivate: [AuthGuard]
   },
 ];

@@ -37,10 +37,22 @@
 	"there-is-no-waiting": "There is no waiting tickets",
 	"there-is-no-missed": "There is no missed tickets",
 	"there-is-no-closed": "There is no closed tickets",
+	"next-queue": "Next in queue",
+	"close-ticket": "Close ticket",
+	"queue": "Queue",
+	"success": "Success",
+	"error-occurred": "An error occurred!",
+	"client-code": "Client code",
+	"there-is-no-queue": "There is no waiting tickets",
 	"username-required": "Username is required!",
 	"username-validation": "Username should be 6 - 25 characters!",
 	"email-required": "Email is required!",
 	"email-validation": "Email should be a valid email address!",
 	"password-required": "Password is required!",
-	"password-validation": "Password should be more than 6 characters!"
+	"password-validation": "Password should be more than 6 characters!",
+	"client-name": "Client name",
+	"total-tickets": "Total tickets",
+	"set-missed": "Set missed",
+	"search-by-ticket": "Search by ticket number",
+	"serve-missed": "Serve missed ticket"
 }

@@ -8,6 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class UserService {
 
   isLogged$ = new BehaviorSubject(false);
+  role = localStorage.getItem('role');
 
   constructor(private jwtHelper: JwtHelperService) {
     if (this.jwtHelper.isTokenExpired(localStorage.getItem('token'))) {
@@ -16,10 +17,11 @@ export class UserService {
     this.updateUser();
   }
 
-  public setUser(userToken: string) {
+  public setUser(userToken: string, role: string) {
     localStorage.setItem('token', userToken);
     const userData = this.jwtHelper.decodeToken(userToken);
     localStorage.setItem('userCode', userData.Id);
+    localStorage.setItem('role', role);
     this.updateUser();
   }
 
