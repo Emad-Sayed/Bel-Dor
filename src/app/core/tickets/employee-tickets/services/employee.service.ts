@@ -18,8 +18,8 @@ export class EmployeeService {
   getServingTicket() {
     return this.http$.get(`${environment.baseUrl}Ticket/EmployeeCurrentServingTicket`);
   }
-  closeServedTicket() {
-    return this.http$.post(`${environment.baseUrl}Ticket/CloseServedTicket`, null);
+  closeServedTicket(params: {Information: string}) {
+    return this.http$.post(`${environment.baseUrl}Ticket/CloseServedTicket`, null, {params: params});
   }
   setTicketAsMissed() {
     return this.http$.post(`${environment.baseUrl}Ticket/SetTicketAsMissed`, null);

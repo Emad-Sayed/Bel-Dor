@@ -8,11 +8,15 @@ import { TranslationsService } from 'src/app/shared/services/translations.servic
 import { EmployeeService } from '../../services/employee.service';
 import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { slideBottomAnimation } from "../../../../../shared/animations/animations";
 
 @Component({
   selector: 'app-queue',
   templateUrl: './queue.component.html',
-  styleUrls: ['./queue.component.scss']
+  styleUrls: ['./queue.component.scss'],
+  animations: [
+    slideBottomAnimation
+  ]
 })
 export class QueueComponent implements OnInit {
   @ViewChild(SpinnerDirective, { static: true, read: SpinnerDirective }) spinnerPlaceholder: SpinnerDirective;
@@ -25,6 +29,11 @@ export class QueueComponent implements OnInit {
   queueActivated = false;
 
   ticketSearch: FormGroup;
+
+  ticketInfoForm: FormGroup = new FormGroup({
+    ticketInfoControl: new FormControl('')
+  });;
+  provideInfo = false;
 
   constructor(
     private realTimeCenter: RealTimeCenterService,
@@ -45,31 +54,30 @@ export class QueueComponent implements OnInit {
 
   ngOnInit(): void {
     this.actRoute.queryParams
-      .subscribe(param => {
-        this.spinnerPlaceholder.sendViewContainer();
-        this.param = param;
-        const data = {
-          statusIds: [1]
-        }
-        if (this.param.queueType === 'missed') {
-          this.ticketQueue = [];
+    .subscribe(param => {
+      this.spinnerPlaceholder.sendViewContainer();
+      this.param = param;
+      const data = {
+        statusIds: [1]
+      }
+      if (this.param.queueType === 'missed') {
+        this.ticketQueue = [];
 
-          this.ticketSearch = new FormGroup({
-            ticketNumber: new FormControl('', Validators.required)
-          });
+        this.ticketSearch = new FormGroup({
+          ticketNumber: new FormControl('', Validators.required)
+        });
 
-          this.ticketSearch.get('ticketNumber').valueChanges
-            .pipe(debounceTime(700, asyncScheduler))
-            .subscribe(val => {
-              console.log(val);
-              if (val) {
-                data['statusIds'] = [4];
-                data['ticketNumbers'] = [val];
-                this.updateQueue(data);
-              }
-            });
-          return;
-        }
+        this.ticketSearch.get('ticketNumber').valueChanges
+        .pipe(debounceTime(700, asyncScheduler))
+        .subscribe(val => {
+          if (val) {
+            data['statusIds'] = [4];
+            data['ticketNumbers'] = [val];
+            this.updateQueue(data);
+          }
+        });
+        return;
+      }
 
         this.updateQueue(data);
       });
@@ -104,6 +112,8 @@ export class QueueComponent implements OnInit {
           }
           this.ticketQueue = res['data'];
           this.addMeToMyRealTimeGroups();
+
+          this.provideInfo = false;
         });
     });
   }
@@ -116,10 +126,17 @@ export class QueueComponent implements OnInit {
   }
 
   removeFromQueue() {
-    this.queueActivated = false;
 
-    this._employeeService.closeServedTicket()
-      .subscribe({ complete: this.updateQueue.bind(this) });
+    const infoValue = this.ticketInfoForm.get('ticketInfoControl').value;
+
+    if (this.provideInfo) {
+      this.queueActivated = false;
+      this._employeeService.closeServedTicket({Information: infoValue})
+      .subscribe({complete: this.updateQueue.bind(this)});
+    }
+    
+    this.provideInfo = true;
+
   }
 
   setAsMissed() {
