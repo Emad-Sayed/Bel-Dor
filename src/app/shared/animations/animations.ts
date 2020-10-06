@@ -23,6 +23,20 @@ export const contentAnimation =
 
     transition('void => *', animate('600ms cubic-bezier(0.55, 0.06, 0.68, 0.19)'))
   ]);
+export const slideBottomAnimation = 
+  trigger('slideBottom', [
+    state('void', style({
+      transform: 'translateY(100px)',
+      opacity: 0
+    })),
+
+    state('*', style({
+      transform: 'translateY(0)',
+      opacity: 1
+    })),
+
+    transition('void => *', animate('600ms cubic-bezier(0.55, 0.06, 0.68, 0.19)'))
+  ]);
 
 export const toastAnimation = 
 trigger('flyInOut', [

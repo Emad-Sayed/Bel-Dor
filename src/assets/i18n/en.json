@@ -54,5 +54,9 @@
 	"total-tickets": "Total tickets",
 	"set-missed": "Set missed",
 	"search-by-ticket": "Search by ticket number",
-	"serve-missed": "Serve missed ticket"
+	"serve-missed": "Serve missed ticket",
+	"provide-info": "Provide info for this ticket",
+	"info": "Information",
+	"optional": "Optional",
+	"save-close": "Save & Close"
 }

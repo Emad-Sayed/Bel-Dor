@@ -54,5 +54,9 @@
 	"total-tickets": "اجمالي التذاكر",
 	"set-missed": "فاقد",
 	"search-by-ticket": "ابحث برقم التذكره",
-	"serve-missed": "اخدم التذكره"
+	"serve-missed": "اخدم التذكره",
+	"provide-info": "ادخل بعض التعليمات على هذه التذكره",
+	"info": "تعليمات",
+	"optional": "اختياري",
+	"save-close": "حفظ واغلاق"
 }
