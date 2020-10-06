@@ -20,6 +20,7 @@ export class UserService {
   public setUser(userToken: string, role: string) {
     localStorage.setItem('token', userToken);
     const userData = this.jwtHelper.decodeToken(userToken);
+    localStorage.setItem('userData', JSON.stringify(userData));
     localStorage.setItem('userCode', userData.Id);
     localStorage.setItem('role', role);
     this.updateUser();
@@ -33,6 +34,13 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('userCode');
     this.updateUser();
+  }
+
+  getEmployeeBranchDepartement(){
+    return JSON.parse(localStorage.getItem("userData"))['BranchDepartementId'];
+  }
+  getLoggedUserId(){
+    return localStorage.getItem("userCode");
   }
 
 }
