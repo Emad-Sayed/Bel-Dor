@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-    baseUrl: 'https://localhost:44335/api/'
-  //baseUrl: 'http://emaddemo-001-site1.itempurl.com/api/'
+  baseUrl: 'http://emaddemo-001-site1.itempurl.com/api/'
 };
 
 /*
