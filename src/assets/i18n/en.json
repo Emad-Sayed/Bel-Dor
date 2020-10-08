@@ -58,5 +58,6 @@
 	"provide-info": "Provide info for this ticket",
 	"info": "Information",
 	"optional": "Optional",
-	"save-close": "Save & Close"
+	"save-close": "Save & Close",
+	"ticket-feedback": "Ticket feedback"
 }
