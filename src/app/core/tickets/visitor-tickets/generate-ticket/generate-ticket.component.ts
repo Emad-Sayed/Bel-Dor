@@ -96,13 +96,22 @@ export class GenerateTicketComponent implements OnInit {
   
       this._visitorTicketService.generateTicket(data)
       .subscribe(res => {
-        // this.router.navigateByUrl('/tickets');
-        this._notificationService
-        .showSuccess(`Your ticket number <mark>${res['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">Check it out.</a>`, 'Ticket generated successfully!');
+        if (this._translationService.isEnglish) {
+          this._notificationService
+          .showSuccess(`Your ticket number <mark>${res['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">Check it out.</a>`, 'Ticket generated successfully!');
+        } else {
+          this._notificationService
+          .showSuccess(`تذكرتك رقم <mark>${res['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">تفقدها من هنا</a>`, 'تم استخراج تذكره بنجاح');
+        }
       },
       err => {
         const errorMessage = this._translationService.isEnglish? err.error.error_EN: err.error.error_AR;
+
+        if (this._translationService.isEnglish) {
         this._notificationService.showError(`${errorMessage} <br> Your current active ticket number is <mark>${err['error']['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">Check it out.</a>`);
+        } else {
+          this._notificationService.showError(`${errorMessage} <br> تذكرتك الحاليه رقم <mark>${err['error']['data'][0]['ticketNumber']}</mark> <a class="e-link" href="/tickets" rel="noopener">تفقدها من هنا</a>`);
+        }
       });
     }
   }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { TranslationsService } from 'src/app/shared/services/translations.service';
+import { Credentials } from '../models/credentials';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +28,12 @@ export class RegisterComponent implements OnInit {
       )
   });
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService,
+    public _translationService: TranslationsService,
+    private _notifyService: NotificationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -35,10 +45,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Username is required!'
+      return 'username-required'
     } 
     else if (errors['maxlength'] || errors['minlength']) {
-      return 'Username should be 6 - 25 characters!'
+      return 'username-validation'
     }
   }
 
@@ -49,7 +59,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Email is required!'
+      return 'email-required'
+    }
+    if (errors['pattern']) {
+      return 'email-validation'
     }
   }
 
@@ -60,10 +73,10 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Password is required!'
+      return 'password-required'
     }
     else if (errors['minlength']) {
-      return 'Password should be more than 6 characters!'
+      return 'password-validation'
     }
   }
 
@@ -72,9 +85,32 @@ export class RegisterComponent implements OnInit {
   }
 
   registerVisitor() {
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
-      //TODO: register api
+      const credentials: Credentials = this.registerForm.value;
+
+      let registeredMessage: string;
+
+      this._authService.registerUser(credentials)
+      .subscribe(() => {
+        this.registerForm.reset();
+
+        registeredMessage = this._translationService.isEnglish? 
+        'You have been registered successfully! You can now login.' :
+        'تم تسجيلك بنجاح! يمكنك الان تسجيل الدخول.';
+
+        
+        this._notifyService.showSuccess(registeredMessage);
+        this.router.navigateByUrl('/login');
+      },
+      (err) => {
+        this.registerForm.reset();
+
+        registeredMessage = this._translationService.isEnglish? 
+        err.error.error_EN: err.error.error_AR;
+
+        this._notifyService.showError(registeredMessage);
+      }
+      );
     }
   }
 

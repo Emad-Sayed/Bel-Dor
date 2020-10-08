@@ -31,6 +31,9 @@ header {
     .e-form-radio:checked ~ .custom-radio {
       color: $main-dark-color;
     }
+    .e-form-group {
+      width: auto;
+    }
   }
 
 

@@ -2,10 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+
+  &__heading {
+    font-size: 1.8rem;
+    color: $main-light-color;
+    margin-bottom: 10px;
+  }
 }
 
 .e-form-group {
   position: relative;
+  width: 100%;
 
   &:not(:last-child) {
     margin-bottom: 3rem;
@@ -209,6 +217,9 @@ input[type="file"] {
   position: absolute;
   bottom: 0;
   font-size: 1.4rem;
+  [dir="rtl"] & {
+    bottom: 5px;
+  }
 }
 
 .e-valid-input {

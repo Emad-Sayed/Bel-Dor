@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/spinner.directive';
+import { Credentials } from '../models/credentials';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(
       '', 
-      [Validators.required, Validators.minLength(6), Validators.maxLength(25)]
+      [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]
       ),
     password: new FormControl(
       '', 
@@ -34,17 +35,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get usernameErrors() {
+  get emailErrors() {
     const errors = this.getFormError('username');
     
     if (!errors) {
       return false;
     }
     if (errors['required']) {
-      return 'Username is required!'
+      return 'email-required'
     } 
     else if (errors['maxlength'] || errors['minlength']) {
-      return 'Username should be 6 - 25 characters!'
+      return 'email-validation'
     }
   }
 
@@ -55,10 +56,10 @@ export class LoginComponent implements OnInit {
       return false;
     }
     if (errors['required']) {
-      return 'Password is required!'
+      return 'password-required'
     }
     else if (errors['minlength']) {
-      return 'Password should be more than 6 characters!'
+      return 'password-validation'
     }
   }
 
@@ -67,16 +68,21 @@ export class LoginComponent implements OnInit {
   }
 
   loginVisitor() {
-    // console.log(this.loginForm);
     if (this.loginForm.valid) {
       this.spinnerPlaceholder.sendViewContainer();
+      const credential: Credentials = this.loginForm.value;
 
-      this._authService.loginUser(this.loginForm.value)
+      this._authService.loginUser(credential)
       .subscribe(
         res => {
-          this._userService.setUser(res['token']);
-
-          this.router.navigateByUrl('/tickets');
+          this._userService.setUser(res['token'], res['roles'][0]);
+          
+          const role = localStorage.getItem('role');
+          if (role==='EMPLOYEE') {
+            this.router.navigateByUrl('/queue');
+          } else {
+            this.router.navigateByUrl('/tickets');
+          }
         }
       );
     }
