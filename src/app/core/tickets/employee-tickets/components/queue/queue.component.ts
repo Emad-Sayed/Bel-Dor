@@ -114,6 +114,7 @@ export class QueueComponent implements OnInit {
           this.addMeToMyRealTimeGroups();
 
           this.provideInfo = false;
+          this.ticketInfoForm.reset();
         });
     });
   }
@@ -136,7 +137,6 @@ export class QueueComponent implements OnInit {
     }
     
     this.provideInfo = true;
-
   }
 
   setAsMissed() {
