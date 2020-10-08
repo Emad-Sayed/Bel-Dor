@@ -4,14 +4,15 @@ import { SpinnerDirective } from 'src/app/shared/components/spinner/directive/sp
 import { TranslationsService } from 'src/app/shared/services/translations.service';
 import { VisitorTicketsService } from './visitor-tickets.service';
 import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
-import { notifyAnimation } from "../../../shared/animations/animations";
+import { notifyAnimation, slideBottomAnimation } from "../../../shared/animations/animations";
 
 @Component({
   selector: 'app-visitor-tickets',
   templateUrl: './visitor-tickets.component.html',
   styleUrls: ['./visitor-tickets.component.scss'],
   animations: [
-    notifyAnimation
+    notifyAnimation,
+    slideBottomAnimation
   ]
 })
 export class VisitorTicketsComponent implements OnInit {
@@ -91,12 +92,21 @@ export class VisitorTicketsComponent implements OnInit {
     });
   }
   showFeedbackDetails(id: string) {
+    if (this.isFeedbackShown) {
+      this.isFeedbackShown = false;
+      return;
+    }
+console.log(id);
+console.log(this.feedbackDetails['id']);
+    if (id === this.feedbackDetails['id']) {
+      this.isFeedbackShown = true;
+      return;
+    }
+
     this._visitorTicketsService.getClosedTicketInfo(id)
       .subscribe(res => {
-        console.log(res);
         this.feedbackDetails = res['data'];
         this.isFeedbackShown = true;
-
       });
   }
 
