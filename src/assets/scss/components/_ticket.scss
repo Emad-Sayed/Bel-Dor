@@ -59,20 +59,44 @@
 
     &__feedback {
       position: absolute;
-      bottom: -30px;
-      left: 0;
-      right: 0;
-      margin: auto;
+      top: -1px;
+      right: -1px;
       text-align: center;
+      z-index: 1;
+      [dir="rtl"] & {
+        right: unset;
+        left: -1px;
+      }
 
       .e-btn {
         @include resetBtn;
-        width: 200px;
         height: 30px;
         border: 1px solid $main-dark-color;
-        border-bottom-left-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
-        background-color: transparent;
+        border-radius: $border-radius;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+        background-color: rgba($color: $main-dark-color, $alpha: 0.1);
+        [dir="rtl"] & {
+          border-radius: $border-radius;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+
+    &__feedback-details {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $main-light-color;
+      border-radius: $border-radius;
+      padding: 1rem;
+      padding-right: 120px;
+      [dir="rtl"] & {
+        padding-right: 1rem;
+        padding-left: 120px;
       }
     }
 

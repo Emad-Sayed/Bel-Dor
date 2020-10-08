@@ -70,7 +70,9 @@
           </p>
 
           <div class="ticket__feedback" *ngIf="param.ticketType === 'closed'">
-            <button class="e-btn" (click)="showFeedbackDetails(ticket.id)">Show ticket feedback</button>
+            <button class="e-btn" (click)="showFeedbackDetails(ticket.id)">
+              {{isFeedbackShown? 'x': 'ticket-feedback' | translate}}
+            </button>
           </div>
 
           <div class="ticket__feedback-details" *ngIf="isFeedbackShown">
