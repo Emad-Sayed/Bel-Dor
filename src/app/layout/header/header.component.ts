@@ -31,6 +31,8 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
+  responsiveMenuOpened = true;
+
   constructor(
     private realTimeCenter:RealTimeCenterService,
     public _transService: TranslationsService,
@@ -40,6 +42,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.languageForm.valueChanges.subscribe(val => {
       this._transService.changeLanguage(val.language);
+    });
+
+    this.router.events.subscribe(() => {
+      this.responsiveMenuOpened = false;
     });
   }
 

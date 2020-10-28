@@ -1,6 +1,7 @@
 @import "../../../assets/scss/settings/variables";
+@import "../../../assets/scss/tools/mixins";
 
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,5 +43,102 @@ header {
     margin-top: 4rem;
     justify-content: center;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    .language-toggle, 
+    .o-nav,
+    .e-main-btn,
+    .e-secondary-btn {
+      display: none;
+    }
+
+    align-items: flex-start;
+    height: 120px;
+    @include transition(height);
+    &--menuOpened {
+      width: 100vw;
+      height: 100vh;
+      background-color: $main-dark-color;
+      position: absolute;
+      z-index: 11;
+
+      .o-nav {
+        display: flex;
+        flex-direction: column;
+
+        &__link {
+          font-size: 2.5rem;
+          margin-bottom: 30px;
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+      .language-toggle {
+        display: flex;
+        flex-basis: 50%;
+        order: 3;
+        align-items: center;
+        height: 60px;
+        .e-form-group {
+          margin-bottom: 0;
+        }
+      }
+      .e-main-btn {
+        display: inline-block;
+        flex-basis: 50%;
+        order: 3;
+      }
+      .e-secondary-btn {
+        display: inline-block;
+        font-size: 2.5rem;
+      }
+    }
+
+    .hamburger-menu {
+      width: 25px;
+      
+      &__icon {
+        width: 100%;
+        height: 2px;
+        position: relative;
+        background-color: $main-color;
+        border-radius: 2px;
+        display: inline-block;
+        @include transition(all);
+
+        &::after, &::before{
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          border-radius: 2px;
+          background-color: $main-color;
+          @include transition(all);
+        }
+        &::before {
+          top: -8px;
+        }
+        &::after {
+          bottom: -8px;
+        }
+      }
+
+      &--menuOpened {
+        .hamburger-menu__icon {
+          background-color: rgba($color: $main-color, $alpha: 0);
+          &::before {
+            transform: rotateZ(-45deg);
+            top: 0;
+          }
+          &::after {
+            transform: rotateZ(45deg);
+            bottom: 0;
+          }
+        }
+      }
+    }
   }
 }
