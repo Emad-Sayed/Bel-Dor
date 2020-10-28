@@ -1,19 +1,27 @@
-<header>
+<header class="header" [ngClass]="{ 'header--menuOpened': responsiveMenuOpened }">
   <button
     class="e-main-btn"
     routerLink="/register"
     *ngIf="!(_userService.isLogged$ | async); else userSetting"
   >
-    {{'register' | translate}}
+    {{ "register" | translate }}
   </button>
 
   <ng-template #userSetting>
     <button (click)="logout()" class="e-secondary-btn">
-      {{ 'logout' | translate }}
+      {{ "logout" | translate }}
     </button>
   </ng-template>
 
   <div class="logo">LOGO HERE</div>
+
+  <div
+    class="hamburger-menu"
+    [ngClass]="{ 'hamburger-menu--menuOpened': responsiveMenuOpened }"
+    (click)="responsiveMenuOpened = !responsiveMenuOpened"
+  >
+    <span class="hamburger-menu__icon"></span>
+  </div>
 
   <form class="language-toggle" [formGroup]="languageForm">
     <fieldset class="e-form-group">
@@ -64,11 +72,11 @@
       class="o-nav__link e-link"
       *ngIf="_userService.isLogged$ | async; else loginLink"
     >
-      {{ 'my-tickets' | translate }}
+      {{ "my-tickets" | translate }}
     </a>
     <ng-template #loginLink>
       <button routerLink="/login" class="e-secondary-btn">
-        {{ 'login' | translate }}
+        {{ "login" | translate }}
       </button>
     </ng-template>
   </nav>
