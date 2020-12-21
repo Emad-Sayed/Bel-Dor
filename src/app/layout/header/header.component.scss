@@ -9,8 +9,9 @@
   padding: 40px 20px;
 
   .logo {
-    font-size: 40px;
-    color: #fff;
+    width: 150px;
+    height: auto;
+    background-color: $main-dark-color;
   }
 
   .language-toggle {
@@ -66,7 +67,10 @@
     }
 
     align-items: flex-start;
-    height: 120px;
+
+    .logo {
+      width: 100px;
+    }
     @include transition(height);
     &--menuOpened {
       width: 100vw;
