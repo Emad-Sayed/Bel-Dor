@@ -67,6 +67,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "employee":{
+              "fileReplacements": [
+                {
+                  "replace": "src/settings/settings.visitor.ts",
+                  "with": "src/settings/settings.employee.ts"
+                }
+              ]
             }
           }
         },
@@ -78,6 +86,9 @@
           "configurations": {
             "production": {
               "browserTarget": "bel-dor:build:production"
+            },
+            "employee": {
+              "browserTarget": "bel-dor:build:employee"
             }
           }
         },

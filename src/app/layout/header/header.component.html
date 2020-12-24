@@ -1,42 +1,27 @@
 <header class="header" [ngClass]="{ 'header--menuOpened': responsiveMenuOpened }">
-  <button
-    class="e-main-btn"
-    routerLink="/register"
-    *ngIf="!(_userService.isLogged$ | async); else userSetting"
-  >
+  <button class="e-main-btn" routerLink="/register"
+    *ngIf="!(_userService.isLogged$ | async) && visitorDomain">
     {{ "register" | translate }}
   </button>
 
-  <ng-template #userSetting>
-    <button (click)="logout()" class="e-secondary-btn">
+    <button *ngIf="(_userService.isLogged$ | async)" (click)="logout()" class="e-secondary-btn">
       {{ "logout" | translate }}
     </button>
-  </ng-template>
 
   <div class="logo">
     <img class="img-fluid" src="../../../assets/images/logo.svg" alt="Bel-Door Logo">
   </div>
 
-  <div
-    class="hamburger-menu"
-    [ngClass]="{ 'hamburger-menu--menuOpened': responsiveMenuOpened }"
-    (click)="responsiveMenuOpened = !responsiveMenuOpened"
-  >
+  <div class="hamburger-menu" [ngClass]="{ 'hamburger-menu--menuOpened': responsiveMenuOpened }"
+    (click)="responsiveMenuOpened = !responsiveMenuOpened">
     <span class="hamburger-menu__icon"></span>
   </div>
 
   <form class="language-toggle" [formGroup]="languageForm">
     <fieldset class="e-form-group">
       <label class="e-form-label" for="en">
-        <input
-          class="e-form-radio"
-          id="en"
-          type="radio"
-          name="language"
-          value="en"
-          formControlName="language"
-          [checked]="_transService.isEnglish"
-        />
+        <input class="e-form-radio" id="en" type="radio" name="language" value="en" formControlName="language"
+          [checked]="_transService.isEnglish" />
 
         <span class="custom-radio">En</span>
       </label>
@@ -44,36 +29,21 @@
 
     <fieldset class="e-form-group">
       <label class="e-form-label arabic-label" for="ar">
-        <input
-          class="e-form-radio"
-          id="ar"
-          type="radio"
-          name="language"
-          value="ar"
-          formControlName="language"
-          [checked]="!_transService.isEnglish"
-        />
+        <input class="e-form-radio" id="ar" type="radio" name="language" value="ar" formControlName="language"
+          [checked]="!_transService.isEnglish" />
 
         <span class="custom-radio">ع</span>
       </label>
     </fieldset>
   </form>
   <nav class="o-nav" *ngIf="_userService.role !== 'EMPLOYEE'">
-    <a
-      class="o-nav__link e-link"
-      [routerLink]="[link.router]"
-      routerLinkActive="e-link--active"
-      *ngFor="let link of navLinks"
-    >
+    <a class="o-nav__link e-link" [routerLink]="[link.router]" routerLinkActive="e-link--active"
+      *ngFor="let link of navLinks">
       {{ link.name | translate }}
     </a>
 
-    <a
-      routerLink="/tickets"
-      routerLinkActive="e-link--active"
-      class="o-nav__link e-link"
-      *ngIf="_userService.isLogged$ | async; else loginLink"
-    >
+    <a routerLink="/tickets" routerLinkActive="e-link--active" class="o-nav__link e-link"
+      *ngIf="_userService.isLogged$ | async; else loginLink">
       {{ "my-tickets" | translate }}
     </a>
     <ng-template #loginLink>

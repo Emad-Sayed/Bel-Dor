@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.service';
+import { setting } from 'src/settings/settings.visitor';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { RealTimeCenterService } from 'src/app/shared/services/real-time-center.
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  visitorDomain = setting.isVisitor;
   languageForm: FormGroup = new FormGroup({
     language: new FormControl(this._transService.isEnglish? 'en': 'ar')
   });
